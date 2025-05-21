@@ -1,0 +1,12 @@
+flutter_native_splash:
+  color: "FFFFFF"
+  image: "assets/images/evently_logo.png"
+  branding: "assets/images/splash_branding.png"
+  branding_bottom_padding: 24
+
+
+  android_12:
+    image: "assets/images/evently_logo_andoried_12.png"
+    color: "FFFFFF"
+    branding: "assets/images/splash_branding.png"
+    branding_bottom_padding: 24
