@@ -55,7 +55,7 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                   Spacer(
-                    flex: 1,
+                    flex: 2,
                   ),
                   BuildTextFields(
                     textFieldDM: TextFieldDM(
@@ -72,9 +72,7 @@ class _SignInState extends State<SignIn> {
                             iconData = Icons.remove_red_eye_sharp;
                             obsecure = true;
                           }
-                          setState(() {
-
-                          });
+                          setState(() {});
                         },
                         icon: Icon(
                           iconData,
@@ -105,7 +103,6 @@ class _SignInState extends State<SignIn> {
                           color: ColorsManager.blue,
                           decorationColor: ColorsManager.blue,
                           decorationThickness: 2,
-
                         ),
                       ),
                     ),
@@ -121,7 +118,9 @@ class _SignInState extends State<SignIn> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, RoutesManager.mainLayout);
+                    },
                     style: ElevatedButton.styleFrom(
                       fixedSize: Size(361.w, 57.h),
                       backgroundColor: ColorsManager.blue,
