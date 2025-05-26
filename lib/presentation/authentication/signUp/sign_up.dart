@@ -20,6 +20,7 @@ class _SignUpState extends State<SignUp> {
   IconData iconDataOfPassword = Icons.remove_red_eye_sharp;
   bool obsecureOfRePassword = true;
   IconData iconDataOfRePassword = Icons.remove_red_eye_sharp;
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

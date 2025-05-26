@@ -14,6 +14,15 @@ class ThemesManager {
       ),
       centerTitle: true,
     ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: ColorsManager.light,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          30.r,
+        ),
+      ),
+      elevation: 0,
+    ),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(
         fontWeight: FontWeight.w500,
@@ -35,25 +44,36 @@ class ThemesManager {
         ),
       ),
     ),
+    tabBarTheme: TabBarTheme(
+      tabAlignment: TabAlignment.start,
+      labelColor: ColorsManager.blue,
+      unselectedLabelColor: ColorsManager.light,
+      indicatorColor: ColorsManager.transparent,
+      dividerHeight: 0,
+      labelPadding: EdgeInsets.only(
+        right: 10,
+      ),
+    ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       type: BottomNavigationBarType.fixed,
-        backgroundColor: ColorsManager.blue,
-        selectedIconTheme: IconThemeData(
-          size: 50,
-        ),
-        selectedItemColor: ColorsManager.light,
-        unselectedItemColor: ColorsManager.light,
-        unselectedIconTheme: IconThemeData(
-          size: 30,
-        ),
-        selectedLabelStyle: TextStyle(
-          fontSize: 17,
-          fontWeight: FontWeight.w700,
-        ),
-        unselectedLabelStyle: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.w400,
-        )),
+      backgroundColor: ColorsManager.blue,
+      selectedIconTheme: IconThemeData(
+        size: 50,
+      ),
+      selectedItemColor: ColorsManager.light,
+      unselectedItemColor: ColorsManager.light,
+      unselectedIconTheme: IconThemeData(
+        size: 30,
+      ),
+      selectedLabelStyle: TextStyle(
+        fontSize: 17,
+        fontWeight: FontWeight.w700,
+      ),
+      unselectedLabelStyle: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
   );
   static final ThemeData dark = ThemeData(
     scaffoldBackgroundColor: ColorsManager.dark,

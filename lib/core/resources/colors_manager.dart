@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class ColorsManager {
@@ -7,4 +6,6 @@ class ColorsManager {
   static final Color grey = Color(0xff7B7B7B);
   static final Color blue=Color(0xff5669FF);
   static final Color transparent=Colors.transparent;
+  static final Color lightBlue=Color(0xff9cccec);
+
 }

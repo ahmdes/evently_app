@@ -4,7 +4,6 @@ import 'package:evently_project/presentation/main_layout/tabs/love/love.dart';
 import 'package:evently_project/presentation/main_layout/tabs/map/map_location.dart';
 import 'package:evently_project/presentation/main_layout/tabs/profile/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -26,14 +25,7 @@ class _MainLayoutState extends State<MainLayout> {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        elevation: 0,
         onPressed: () {},
-        backgroundColor: ColorsManager.light,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            30.r,
-          ),
-        ),
         child: Icon(
           Icons.add_circle_outlined,
           color: ColorsManager.blue,

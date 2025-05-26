@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import '../../../../core/resources/constant_manager.dart';
+import '../../../components/event.dart';
 
-import '../../../../core/resources/colors_manager.dart';
-class Love extends StatelessWidget {
+class Love extends StatefulWidget {
   const Love({super.key});
 
   @override
+  State<Love> createState() => _LoveState();
+}
+class _LoveState extends State<Love> {
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: ColorsManager.light,
-      ),
-      child: Center(
-        child: Text(
-          "Love",
-        ),
+    return Expanded(
+      child: ListView.builder(
+        itemBuilder: (context, index) {
+          return Event(eventDM: ConstantManager.favoriteEvents[index]);
+        },
+        itemCount: ConstantManager.favoriteEvents.length,
       ),
     );
   }

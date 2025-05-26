@@ -14,6 +14,6 @@ class MapLocation extends StatelessWidget {
           "Map",
         ),
       ),
-    );;
+    );
   }
 }

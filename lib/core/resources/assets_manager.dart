@@ -6,4 +6,14 @@ class AssetsManager{
   static const String america="$base/america.png";
   static const String resetPassword="$base/reset_password.png";
   static const String bosla="$base/bosla.png";
+  static const String birthday="$base/birthday.png";
+  static const String heartIcon="$base/heart_icon.png";
+  static const String filledColorHeart="$base/filled_color_heart.png";
+  static const String sport="$base/sport.png";
+  static const String meeting="$base/meeting.png";
+  static const String exception="$base/exception.png";
+  static const String bike="$base/bike.png";
+  static const String birthdayIcon="$base/birthday_icon.png";
+
+
 }
