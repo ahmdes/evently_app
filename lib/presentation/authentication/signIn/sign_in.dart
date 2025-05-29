@@ -1,8 +1,8 @@
 import 'package:evently_project/core/resources/assets_manager.dart';
 import 'package:evently_project/core/resources/colors_manager.dart';
 import 'package:evently_project/core/routes/routes_manager.dart';
-import 'package:evently_project/presentation/authentication/components/build_text_fields.dart';
-import 'package:evently_project/presentation/authentication/models/text_field_dm.dart';
+import 'package:evently_project/presentation/components/build_text_fields.dart';
+import 'package:evently_project/presentation/models/text_field_dm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';

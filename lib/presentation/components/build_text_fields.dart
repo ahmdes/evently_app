@@ -1,4 +1,4 @@
-import 'package:evently_project/presentation/authentication/models/text_field_dm.dart';
+import 'package:evently_project/presentation/models/text_field_dm.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

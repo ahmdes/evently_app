@@ -31,36 +31,43 @@ class ConstantManager {
     EventDM(
       image: AssetsManager.birthday,
       eventName: "This is a Birthday Party",
-      day: '21',
-      month: 'Nov',
       backGroundOfDateContainer: ColorsManager.light,
       favorite: AssetsManager.heartIcon,
     ),
     EventDM(
       image: AssetsManager.sport,
       eventName: "This is a Football match",
-      day: '22',
-      month: 'Nov',
       backGroundOfDateContainer: ColorsManager.light,
       favorite: AssetsManager.heartIcon,
     ),
     EventDM(
       image: AssetsManager.exception,
-      eventName: "This is an exception Party",
-      day: '23',
-      month: 'Nov',
+      eventName: "Meeting for Updating The Development Method",
       backGroundOfDateContainer: ColorsManager.light,
       favorite: AssetsManager.heartIcon,
     ),
     EventDM(
       image: AssetsManager.meeting,
-      eventName: "Meeting for Updating The Development",
-      day: '24',
-      month: 'Nov',
+      eventName: "Meeting for Updating The Development Method",
       backGroundOfDateContainer: ColorsManager.light,
       favorite: AssetsManager.heartIcon,
     ),
   ];
 
   static List<EventDM> favoriteEvents = [];
+
+  static List<String> months = [
+    "Jan",
+    "Fep",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 }

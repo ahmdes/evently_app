@@ -1,6 +1,6 @@
 import 'package:evently_project/core/resources/colors_manager.dart';
 import 'package:evently_project/presentation/main_layout/tabs/home/home.dart';
-import 'package:evently_project/presentation/main_layout/tabs/love/love.dart';
+import 'package:evently_project/presentation/main_layout/tabs/favourite/favourite.dart';
 import 'package:evently_project/presentation/main_layout/tabs/map/map_location.dart';
 import 'package:evently_project/presentation/main_layout/tabs/profile/profile.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ class _MainLayoutState extends State<MainLayout> {
   List<Widget> tabs = [
     Home(),
     MapLocation(),
-    Love(),
+    Favourite(),
     Profile(),
   ];
   int selectedIndex = 0;
@@ -55,7 +55,7 @@ class _MainLayoutState extends State<MainLayout> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.heart_broken_outlined),
-          label: "Love",
+          label: "Favourite",
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),

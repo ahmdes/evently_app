@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/resources/assets_manager.dart';
 import '../../../core/resources/colors_manager.dart';
 import '../../../core/routes/routes_manager.dart';
-import '../components/build_text_fields.dart';
-import '../models/text_field_dm.dart';
+import '../../components/build_text_fields.dart';
+import '../../models/text_field_dm.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});

@@ -1,4 +1,3 @@
-import 'package:evently_project/core/resources/assets_manager.dart';
 import 'package:evently_project/core/resources/colors_manager.dart';
 import 'package:evently_project/core/resources/constant_manager.dart';
 import 'package:evently_project/presentation/components/button_of_events.dart';

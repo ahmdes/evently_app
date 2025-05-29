@@ -8,7 +8,7 @@ class EventlyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize:Size(393, 841),
+      designSize:Size(MediaQuery.of(context).size.width,MediaQuery.of(context).size.height),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context,child)=>MaterialApp(

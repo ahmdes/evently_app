@@ -1,3 +1,4 @@
+import 'package:evently_project/core/extensions/date.dart';
 import 'package:evently_project/core/resources/assets_manager.dart';
 import 'package:evently_project/core/resources/colors_manager.dart';
 import 'package:evently_project/core/resources/constant_manager.dart';
@@ -9,13 +10,11 @@ import 'package:google_fonts/google_fonts.dart';
 class Event extends StatefulWidget {
   const Event({super.key, required this.eventDM});
   final EventDM eventDM;
-
   @override
   State<Event> createState() => _EventState();
 }
 
 class _EventState extends State<Event> {
-
   String clickedFavorite = AssetsManager.filledColorHeart;
 
   String clickedUnFavorite = AssetsManager.heartIcon;
@@ -23,7 +22,6 @@ class _EventState extends State<Event> {
   Color colorOfUnFavoriteDate = ColorsManager.light;
 
   Color colorOfFavoriteDate = ColorsManager.lightBlue;
-
 
   @override
   Widget build(BuildContext context) {
@@ -62,40 +60,43 @@ class _EventState extends State<Event> {
                   color: ColorsManager.light,
                 ),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Spacer(),
-                    Text(
-                      widget.eventDM.eventName,
-                      style: GoogleFonts.inter(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14.sp,
-                      ),
-                    ),
-                    Spacer(
-                      flex: 10,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        if (widget.eventDM.favorite == clickedFavorite) {
-                          widget.eventDM.favorite = clickedUnFavorite;
-                          widget.eventDM.backGroundOfDateContainer = colorOfUnFavoriteDate;
-                          ConstantManager.favoriteEvents.remove(widget.eventDM);
-                        } else if (widget.eventDM.favorite == clickedUnFavorite) {
-                          widget.eventDM.favorite = clickedFavorite;
-                          widget.eventDM.backGroundOfDateContainer = colorOfFavoriteDate;
-                          ConstantManager.favoriteEvents.add(widget.eventDM);
-                        }
-                        setState(() {
-
-                        });
-                      },
-                      child: SizedBox(
-                        child: Image.asset(
-                          widget.eventDM.favorite,
+                    SizedBox(width: 10,),
+                    Expanded(
+                      flex: 4,
+                      child: Text(
+                        widget.eventDM.eventName,
+                        style: GoogleFonts.inter(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14.sp,
                         ),
                       ),
                     ),
-                    Spacer(),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          if (widget.eventDM.favorite == clickedFavorite) {
+                            widget.eventDM.favorite = clickedUnFavorite;
+                            widget.eventDM.backGroundOfDateContainer =
+                                colorOfUnFavoriteDate;
+                            ConstantManager.favoriteEvents.remove(widget.eventDM);
+                          } else if (widget.eventDM.favorite ==
+                              clickedUnFavorite) {
+                            widget.eventDM.favorite = clickedFavorite;
+                            widget.eventDM.backGroundOfDateContainer =
+                                colorOfFavoriteDate;
+                            ConstantManager.favoriteEvents.add(widget.eventDM);
+                          }
+                          setState(() {});
+                        },
+                        child: SizedBox(
+                          child: Image.asset(
+                            widget.eventDM.favorite,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -104,30 +105,35 @@ class _EventState extends State<Event> {
               left: 10.w,
               top: 8.h,
               child: Container(
-                width: 50.w,
-                height: 61.h,
+                width: 60.w,
+                height: 62.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.r),
                   color: widget.eventDM.backGroundOfDateContainer,
                 ),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      textAlign: TextAlign.center,
-                      widget.eventDM.day,
-                      style: GoogleFonts.inter(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w700,
-                        color: ColorsManager.blue,
+                    Expanded(
+                      child: Text(
+                        textAlign: TextAlign.center,
+                        widget.eventDM.dateTime.day.toString(),
+                        style: GoogleFonts.inter(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w700,
+                          color: ColorsManager.blue,
+                        ),
                       ),
                     ),
-                    Text(
-                      textAlign: TextAlign.center,
-                      widget.eventDM.month,
-                      style: GoogleFonts.inter(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w700,
-                        color: ColorsManager.blue,
+                    Expanded(
+                      child: Text(
+                        textAlign: TextAlign.center,
+                        widget.eventDM.dateTime.getDateFormatFromDateTime,
+                        style: GoogleFonts.inter(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w700,
+                          color: ColorsManager.blue,
+                        ),
                       ),
                     ),
                   ],
@@ -139,4 +145,5 @@ class _EventState extends State<Event> {
       ),
     );
   }
+
 }

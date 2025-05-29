@@ -1,4 +1,5 @@
 import 'package:evently_project/core/resources/colors_manager.dart';
+import 'package:evently_project/presentation/models/button_of_events_dm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

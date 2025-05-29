@@ -6,7 +6,7 @@ import 'package:evently_project/presentation/main_layout/tabs/profile/profile.da
 import 'package:flutter/cupertino.dart';
 import '../../presentation/authentication/signUp/sign_up.dart';
 import '../../presentation/main_layout/tabs/home/home.dart';
-import '../../presentation/main_layout/tabs/love/love.dart';
+import '../../presentation/main_layout/tabs/favourite/favourite.dart';
 
 class RoutesManager {
   static const String signIn = "/SignIn";
@@ -46,7 +46,7 @@ class RoutesManager {
         );
       case love:
         return CupertinoPageRoute(
-          builder: (context) => Love(),
+          builder: (context) => Favourite(),
         );
       case profile:
         return CupertinoPageRoute(
