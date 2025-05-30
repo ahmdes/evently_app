@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../components/buildElevatedButton.dart';
+
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
 
@@ -52,6 +54,7 @@ class _SignInState extends State<SignIn> {
                       suffixIcon: null,
                       hintText: "Email",
                       obsecureText: false,
+                      heightOfTextField: null,
                     ),
                   ),
                   Spacer(
@@ -81,6 +84,7 @@ class _SignInState extends State<SignIn> {
                       ),
                       hintText: "Password",
                       obsecureText: obsecure,
+                      heightOfTextField: null,
                     ),
                   ),
                   Spacer(
@@ -117,29 +121,12 @@ class _SignInState extends State<SignIn> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ElevatedButton(
-                    onPressed: () {
+                  BuildElevatedButton(
+                    
+                    nameOfButton: 'Login',
+                    onClicked: () {
                       Navigator.pushNamed(context, RoutesManager.mainLayout);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      fixedSize: Size(361.w, 57.h),
-                      backgroundColor: ColorsManager.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        side: BorderSide(
-                          color: ColorsManager.blue,
-                          width: 2.w,
-                        ),
-                      ),
-                    ),
-                    child: Text(
-                      "Login",
-                      style: GoogleFonts.inter(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: ColorsManager.light,
-                      ),
-                    ),
+                    }, backGroundColor: ColorsManager.blue,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

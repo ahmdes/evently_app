@@ -1,4 +1,5 @@
 import 'package:evently_project/core/resources/colors_manager.dart';
+import 'package:evently_project/core/routes/routes_manager.dart';
 import 'package:evently_project/presentation/main_layout/tabs/home/home.dart';
 import 'package:evently_project/presentation/main_layout/tabs/favourite/favourite.dart';
 import 'package:evently_project/presentation/main_layout/tabs/map/map_location.dart';
@@ -25,7 +26,9 @@ class _MainLayoutState extends State<MainLayout> {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, RoutesManager.createEvent);
+        },
         child: Icon(
           Icons.add_circle_outlined,
           color: ColorsManager.blue,

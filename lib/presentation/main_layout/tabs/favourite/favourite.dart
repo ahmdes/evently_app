@@ -28,7 +28,7 @@ class _FavouriteState extends State<Favourite> {
                 prefixIcon: Icon(Icons.search),
                 suffixIcon: null,
                 hintText: "Search for Event",
-                obsecureText: false,
+                obsecureText: false, heightOfTextField: null,
               ),
             ),
           ),

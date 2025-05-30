@@ -7,13 +7,22 @@ class ThemesManager {
   static final ThemeData light = ThemeData(
     scaffoldBackgroundColor: ColorsManager.light,
     appBarTheme: AppBarTheme(
+      iconTheme: IconThemeData(
+        color: ColorsManager.blue,
+      ),
       backgroundColor: ColorsManager.light,
       titleTextStyle: TextStyle(
         fontWeight: FontWeight.w400,
-        fontSize: 20,
-        color: ColorsManager.dark,
+        fontSize: 20.sp,
+        color: ColorsManager.blue,
       ),
       centerTitle: true,
+    ),
+    textTheme: TextTheme(
+      titleLarge: TextStyle(
+        color: ColorsManager.blue,
+        fontWeight: FontWeight.w400,
+      ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: ColorsManager.light,
@@ -46,6 +55,7 @@ class ThemesManager {
       ),
     ),
     tabBarTheme: TabBarTheme(
+
       tabAlignment: TabAlignment.start,
       labelColor: ColorsManager.blue,
       unselectedLabelColor: ColorsManager.light,

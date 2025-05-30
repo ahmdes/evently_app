@@ -27,6 +27,25 @@ class ConstantManager {
     ),
   ];
 
+  static List<ButtonOfEventsDM> eventTabsWithOutAll = [
+    ButtonOfEventsDM(
+      text: "Sport",
+      image: AssetsManager.bike,
+    ),
+    ButtonOfEventsDM(
+      text: "Birthday",
+      image: AssetsManager.birthdayIcon,
+    ),
+    ButtonOfEventsDM(
+      text: "Eating",
+      image: AssetsManager.bosla,
+    ),
+    ButtonOfEventsDM(
+      text: "Holiday",
+      image: AssetsManager.bosla,
+    ),
+  ];
+
   static List<EventDM> events = [
     EventDM(
       image: AssetsManager.birthday,
@@ -55,19 +74,4 @@ class ConstantManager {
   ];
 
   static List<EventDM> favoriteEvents = [];
-
-  static List<String> months = [
-    "Jan",
-    "Fep",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
 }

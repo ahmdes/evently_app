@@ -14,6 +14,5 @@ class AssetsManager{
   static const String exception="$base/exception.png";
   static const String bike="$base/bike.png";
   static const String birthdayIcon="$base/birthday_icon.png";
-
-
+  static const String routeImage="$base/route_image.jpg";
 }

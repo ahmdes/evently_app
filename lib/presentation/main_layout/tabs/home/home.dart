@@ -1,21 +1,19 @@
 import 'package:evently_project/core/resources/colors_manager.dart';
 import 'package:evently_project/core/resources/constant_manager.dart';
-import 'package:evently_project/presentation/components/button_of_events.dart';
 import 'package:evently_project/presentation/components/event.dart';
-import 'package:evently_project/presentation/models/button_of_events_dm.dart';
+import 'package:evently_project/presentation/models/tab_design_dm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../components/custom_tab_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
-
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  int selectedTabIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -110,29 +108,14 @@ class _HomeState extends State<Home> {
                 SizedBox(
                   height: 8,
                 ),
-                DefaultTabController(
-                  length:ConstantManager.eventTabs.length,
-                  child: TabBar(
-                    onTap: (index) {
-                      selectedTabIndex = index;
-                      setState(() {});
-                    },
-                    isScrollable: true,
-                    splashBorderRadius: BorderRadius.circular(10),
-                    tabs: [
-                      for (int i = 0; i < ConstantManager.eventTabs.length; i++)
-                        Tab(
-                          child: ButtonOfEvents(
-                            buttonOfEventsDM: ButtonOfEventsDM(
-                              text: ConstantManager.eventTabs[i].text,
-                              image: ConstantManager.eventTabs[i].image,
-                            ),
-                            isSelected: selectedTabIndex == i,
-                          ),
-                        ),
-                    ],
-
-                  ),
+                CustomTabBar(
+                  tabDesignDM: TabDesignDM(
+                    selectedTabBG: ColorsManager.light,
+                    unSelectedTabBG: ColorsManager.blue,
+                    selectedLabelColor: ColorsManager.blue,
+                    unSelectedLabelColor: ColorsManager.light,
+                    borderColor: ColorsManager.light,
+                  ), tabs: ConstantManager.eventTabs,
                 ),
               ],
             ),

@@ -7,5 +7,5 @@ class ColorsManager {
   static final Color blue=Color(0xff5669FF);
   static final Color transparent=Colors.transparent;
   static final Color lightBlue=Color(0xff9cccec);
-
+  static final Color lightRed=Color(0xffFF5659);
 }

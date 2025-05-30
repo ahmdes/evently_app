@@ -10,10 +10,14 @@ class BuildTextFields extends StatelessWidget {
     return TextFormField(
       obscureText: textFieldDM.obsecureText,
       decoration: InputDecoration(
+        isDense: true,
         prefixIcon: textFieldDM.prefixIcon,
         hintText: textFieldDM.hintText,
         suffixIcon: textFieldDM.suffixIcon,
-        hintStyle: GoogleFonts.inter(),
+        hintStyle: GoogleFonts.inter(
+
+        ),
+
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:evently_project/presentation/components/buildElevatedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -58,6 +59,7 @@ class _SignUpState extends State<SignUp> {
                       suffixIcon: null,
                       hintText: "Name",
                       obsecureText: false,
+                      heightOfTextField: null,
                     ),
                   ),
                   Spacer(
@@ -72,6 +74,7 @@ class _SignUpState extends State<SignUp> {
                       suffixIcon: null,
                       hintText: "Email",
                       obsecureText: false,
+                      heightOfTextField: null,
                     ),
                   ),
                   Spacer(
@@ -103,6 +106,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                       hintText: "Password",
                       obsecureText: obsecureOfPassword,
+                      heightOfTextField: null,
                     ),
                   ),
                   Spacer(
@@ -134,32 +138,15 @@ class _SignUpState extends State<SignUp> {
                       ),
                       hintText: "Re Password",
                       obsecureText: obsecureOfRePassword,
+                      heightOfTextField: null,
                     ),
                   ),
                   Spacer(
                     flex: 4,
                   ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      fixedSize: Size(361.w, 57.h),
-                      backgroundColor: ColorsManager.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        side: BorderSide(
-                          color: ColorsManager.blue,
-                          width: 2.w,
-                        ),
-                      ),
-                    ),
-                    child: Text(
-                      "Create Account",
-                      style: GoogleFonts.inter(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: ColorsManager.light,
-                      ),
-                    ),
+                  BuildElevatedButton(
+                    nameOfButton: "Create Account",
+                    onClicked: () {}, backGroundColor: ColorsManager.blue,
                   ),
                   Spacer(
                     flex: 2,
