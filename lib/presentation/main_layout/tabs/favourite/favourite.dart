@@ -1,4 +1,3 @@
-import 'package:evently_project/core/resources/colors_manager.dart';
 import 'package:evently_project/presentation/components/build_text_fields.dart';
 import 'package:evently_project/presentation/models/text_field_dm.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,6 @@
 import 'package:evently_project/core/resources/assets_manager.dart';
 import 'package:evently_project/presentation/components/buildElevatedButton.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/resources/colors_manager.dart';
 

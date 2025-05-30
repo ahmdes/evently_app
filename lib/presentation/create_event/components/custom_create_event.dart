@@ -8,11 +8,8 @@ import 'package:evently_project/presentation/models/tab_design_dm.dart';
 import 'package:evently_project/presentation/models/text_field_dm.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../core/resources/constant_manager.dart';
-import '../../components/button_of_events.dart';
 import '../../components/custom_tab_bar.dart';
-import '../../models/button_of_events_dm.dart';
 
 class CustomCreateEvent extends StatefulWidget {
   const CustomCreateEvent({super.key, required this.image});
