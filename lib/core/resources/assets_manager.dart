@@ -15,4 +15,11 @@ class AssetsManager{
   static const String bike="$base/bike.png";
   static const String birthdayIcon="$base/birthday_icon.png";
   static const String routeImage="$base/route_image.jpg";
+  static const String beingCreative="$base/being-creative.png";
+  static const String moon="$base/moon.png";
+  static const String sun="$base/sun.png";
+  static const String cat="$base/cat_on_boarding.png";
+  static const String search="$base/search.png";
+  static const String social="$base/social.png";
+
 }

@@ -1,6 +1,7 @@
 import 'package:evently_project/core/resources/colors_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ThemesManager {
   static final ThemeData light = ThemeData(
@@ -21,6 +22,15 @@ class ThemesManager {
       titleLarge: TextStyle(
         color: ColorsManager.blue,
         fontWeight: FontWeight.w400,
+      ),
+      titleMedium: TextStyle(
+        color: ColorsManager.blue,
+        fontWeight: FontWeight.w700,
+      ),
+      titleSmall: GoogleFonts.inter(
+        color: ColorsManager.dark,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w500,
       ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(

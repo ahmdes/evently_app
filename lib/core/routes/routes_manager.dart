@@ -4,6 +4,8 @@ import 'package:evently_project/presentation/create_event/create_event.dart';
 import 'package:evently_project/presentation/main_layout/main_layout.dart';
 import 'package:evently_project/presentation/main_layout/tabs/map/map_location.dart';
 import 'package:evently_project/presentation/main_layout/tabs/profile/profile.dart';
+import 'package:evently_project/presentation/on_boarding/on_boarding.dart';
+import 'package:evently_project/presentation/on_boarding/on_boarding_start.dart';
 import 'package:flutter/cupertino.dart';
 import '../../presentation/authentication/signUp/sign_up.dart';
 import '../../presentation/main_layout/tabs/home/home.dart';
@@ -19,8 +21,8 @@ class RoutesManager {
   static const String favourite = "/Favourite";
   static const String profile = "/Profile";
   static const String createEvent = "/CreateEvent";
-
-
+  static const String onBoarding = "/OnBoarding";
+  static const String onBoardingStart="/OnBoardingStart";
   static Route? router(RouteSettings settings) {
     switch (settings.name) {
       case signIn:
@@ -58,6 +60,14 @@ class RoutesManager {
       case createEvent:
         return CupertinoPageRoute(
           builder: (context) => CreateEvent(),
+        );
+      case onBoarding:
+        return CupertinoPageRoute(
+          builder: (context) => OnBoarding(),
+        );
+      case onBoardingStart:
+        return CupertinoPageRoute(
+          builder: (context) => OnBoardingStart(),
         );
     }
   }

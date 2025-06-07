@@ -1,6 +1,7 @@
 import 'package:evently_project/core/resources/colors_manager.dart';
 import 'package:evently_project/presentation/models/button_of_events_dm.dart';
 import 'package:evently_project/presentation/models/event_d_m.dart';
+import 'package:evently_project/presentation/on_boarding/models/on_boarding_dm.dart';
 import 'assets_manager.dart';
 
 class ConstantManager {
@@ -26,7 +27,6 @@ class ConstantManager {
       image: AssetsManager.bosla,
     ),
   ];
-
   static List<ButtonOfEventsDM> eventTabsWithOutAll = [
     ButtonOfEventsDM(
       text: "Sport",
@@ -45,7 +45,6 @@ class ConstantManager {
       image: AssetsManager.bosla,
     ),
   ];
-
   static List<EventDM> events = [
     EventDM(
       image: AssetsManager.birthday,
@@ -72,6 +71,25 @@ class ConstantManager {
       favorite: AssetsManager.heartIcon,
     ),
   ];
-
   static List<EventDM> favoriteEvents = [];
+  static List<OnBoardingDM> onBoardingInfo = [
+    OnBoardingDM(
+      image: AssetsManager.cat,
+      title: "Personalize Your Experience",
+      subject:
+          "Dive into a world of events crafted to fit your unique interests. Whether you're into live music, art workshops, professional networking, or simply discovering new experiences, we have something for everyone. Our curated recommendations will help you explore, connect, and make the most of every opportunity around you.",
+    ),
+    OnBoardingDM(
+      image: AssetsManager.search,
+      title: "Effortless Event Planning",
+      subject:
+          " Take the hassle out of organizing events with our all-in-one planning tools. From setting up invites and managing RSVPs to scheduling reminders and coordinating details, we’ve got you covered. Plan with ease and focus on what matters – creating an unforgettable experience for you and your guests.",
+    ),
+    OnBoardingDM(
+      image: AssetsManager.social,
+      title: "Connect with Friends & Share Moments",
+      subject:
+          "Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories.",
+    ),
+  ];
 }

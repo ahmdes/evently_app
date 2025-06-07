@@ -13,7 +13,7 @@ class EventlyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context,child)=>MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: RoutesManager.signIn,
+        initialRoute: RoutesManager.onBoarding,
         theme: ThemesManager.light,
         darkTheme: ThemesManager.dark,
         themeMode: ThemeMode.light,
