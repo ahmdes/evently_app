@@ -31,7 +31,6 @@ class ResetPassword extends StatelessWidget {
               BuildElevatedButton(
                 nameOfButton: "Reset Password",
                 onClicked: () {},
-                  backGroundColor: ColorsManager.blue
               ),
             ],
           ),

@@ -19,8 +19,8 @@ class _CustomTabBarState extends State<CustomTabBar> {
     return DefaultTabController(
       length: ConstantManager.eventTabs.length,
       child: TabBar(
-        unselectedLabelColor: widget.tabDesignDM.unSelectedLabelColor,
-        labelColor: widget.tabDesignDM.selectedLabelColor,
+       // unselectedLabelColor: widget.tabDesignDM.unSelectedLabelColor,
+       // labelColor: widget.tabDesignDM.selectedLabelColor,
         onTap: (index) {
           selectedTabIndex = index;
           setState(() {});

@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
           width: double.infinity,
           height: 200.h,
           decoration: BoxDecoration(
-            color: ColorsManager.blue,
+            color: Theme.of(context).primaryColor,
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(30.r),
             ),
@@ -51,11 +51,7 @@ class _HomeState extends State<Home> {
                         ),
                         Text(
                           "John Safwat",
-                          style: GoogleFonts.inter(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 24.sp,
-                            color: ColorsManager.light,
-                          ),
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       ],
                     ),
@@ -65,13 +61,12 @@ class _HomeState extends State<Home> {
                       icon: Icon(
                         Icons.light_mode_outlined,
                         size: 30,
-                        color: ColorsManager.light,
                       ),
                     ),
                     IconButton(
                       onPressed: () {},
                       style: IconButton.styleFrom(
-                          backgroundColor: ColorsManager.light,
+                        backgroundColor: ColorsManager.light,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                               8.r,
@@ -79,11 +74,7 @@ class _HomeState extends State<Home> {
                           )),
                       icon: Text(
                         "EN",
-                        style: GoogleFonts.inter(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w700,
-                          color: ColorsManager.blue,
-                        ),
+                        style: Theme.of(context).textTheme.displaySmall,
                       ),
                     ),
                   ],
@@ -92,16 +83,11 @@ class _HomeState extends State<Home> {
                   children: [
                     Icon(
                       Icons.location_on_outlined,
-                      color: ColorsManager.light,
                       size: 30,
                     ),
                     Text(
                       "Cairo , Egypt",
-                      style: GoogleFonts.inter(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14.sp,
-                        color: ColorsManager.light,
-                      ),
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
                   ],
                 ),
@@ -111,7 +97,7 @@ class _HomeState extends State<Home> {
                 CustomTabBar(
                   tabDesignDM: TabDesignDM(
                     selectedTabBG: ColorsManager.light,
-                    unSelectedTabBG: ColorsManager.blue,
+                    unSelectedTabBG: ColorsManager.transparent,
                     selectedLabelColor: ColorsManager.blue,
                     unSelectedLabelColor: ColorsManager.light,
                     borderColor: ColorsManager.light,

@@ -8,10 +8,50 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../core/resources/colors_manager.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({super.key});
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  String dropDownValueLanguage = 'Arabic';
+  String dropDownValueTheme = 'Light';
   @override
   Widget build(BuildContext context) {
+    List<DropdownMenuItem<String>> itemsOfLanguage = [
+      DropdownMenuItem(
+        value: "Arabic",
+        child: Text(
+          "Arabic",
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+      ),
+      DropdownMenuItem(
+        value: "English",
+        child: Text(
+          "English",
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+      ),
+    ];
+    List<DropdownMenuItem<String>> itemsOfTheme = [
+      DropdownMenuItem(
+        value: "Light",
+        child: Text(
+          "Light",
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+      ),
+      DropdownMenuItem(
+        value: "Dark",
+        child: Text(
+          "Dark",
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+      ),
+    ];
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,18 +139,8 @@ class Profile extends StatelessWidget {
                       color: ColorsManager.dark,
                     ),
                   ),
-                  BuildTextFields(
-                    textFieldDM: TextFieldDM(
-                      prefixIcon: null,
-                      suffixIcon: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.arrow_drop_down),
-                      ),
-                      hintText: "Arabic",
-                      obsecureText: false,
-                      heightOfTextField: 0,
-                    ),
-                  ),
+                  buildDropdownButtonFormField(
+                      itemsOfLanguage, dropDownValueLanguage),
                   Text(
                     "Theme",
                     style: GoogleFonts.inter(
@@ -119,34 +149,53 @@ class Profile extends StatelessWidget {
                       color: ColorsManager.dark,
                     ),
                   ),
-                  BuildTextFields(
-                    textFieldDM: TextFieldDM(
-                      prefixIcon: null,
-                      suffixIcon: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.arrow_drop_down),
-                      ),
-                      hintText: "Light",
-                      obsecureText: false,
-                      heightOfTextField: 0,
-                    ),
-                  ),
+                  buildDropdownButtonFormField(
+                      itemsOfTheme, dropDownValueTheme),
                 ],
               ),
             ),
           ),
-          Spacer(flex: 8,),
+          Spacer(
+            flex: 8,
+          ),
           Padding(
-            padding:  REdgeInsets.all(20.0),
+            padding: REdgeInsets.all(20.0),
             child: BuildElevatedButton(
-              
               nameOfButton: "Logout",
-              onClicked: () {}, backGroundColor: ColorsManager.lightRed,
+              onClicked: () {},
             ),
           ),
           Spacer(),
         ],
       ),
+    );
+  }
+
+  DropdownButtonFormField<String> buildDropdownButtonFormField(
+      List<DropdownMenuItem<String>> items, String value) {
+    return DropdownButtonFormField(
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(
+            16,
+          ),
+          borderSide: BorderSide(
+            color: ColorsManager.blue,
+            width: 2,
+          ),
+        ),
+      ),
+      borderRadius: BorderRadius.circular(16.r),
+      value: value,
+      isExpanded: true,
+      icon: Icon(
+        Icons.arrow_drop_down,
+      ),
+      onChanged: (String? newValue) {
+        value = newValue!;
+        setState(() {});
+      },
+      items: items,
     );
   }
 }

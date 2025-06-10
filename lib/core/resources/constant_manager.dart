@@ -75,7 +75,7 @@ class ConstantManager {
   static List<OnBoardingDM> onBoardingInfo = [
     OnBoardingDM(
       image: AssetsManager.cat,
-      title: "Personalize Your Experience",
+      title: "Find Events That Inspire You",
       subject:
           "Dive into a world of events crafted to fit your unique interests. Whether you're into live music, art workshops, professional networking, or simply discovering new experiences, we have something for everyone. Our curated recommendations will help you explore, connect, and make the most of every opportunity around you.",
     ),

@@ -54,7 +54,6 @@ class _SignUpState extends State<SignUp> {
                     textFieldDM: TextFieldDM(
                       prefixIcon: Icon(
                         Icons.person,
-                        color: ColorsManager.grey,
                       ),
                       suffixIcon: null,
                       hintText: "Name",
@@ -69,7 +68,6 @@ class _SignUpState extends State<SignUp> {
                     textFieldDM: TextFieldDM(
                       prefixIcon: Icon(
                         Icons.email_rounded,
-                        color: ColorsManager.grey,
                       ),
                       suffixIcon: null,
                       hintText: "Email",
@@ -84,7 +82,6 @@ class _SignUpState extends State<SignUp> {
                     textFieldDM: TextFieldDM(
                       prefixIcon: Icon(
                         Icons.lock,
-                        color: ColorsManager.grey,
                       ),
                       suffixIcon: IconButton(
                         onPressed: () {
@@ -101,7 +98,6 @@ class _SignUpState extends State<SignUp> {
                         },
                         icon: Icon(
                           iconDataOfPassword,
-                          color: ColorsManager.grey,
                         ),
                       ),
                       hintText: "Password",
@@ -116,7 +112,6 @@ class _SignUpState extends State<SignUp> {
                     textFieldDM: TextFieldDM(
                       prefixIcon: Icon(
                         Icons.lock,
-                        color: ColorsManager.grey,
                       ),
                       suffixIcon: IconButton(
                         onPressed: () {
@@ -133,7 +128,6 @@ class _SignUpState extends State<SignUp> {
                         },
                         icon: Icon(
                           iconDataOfRePassword,
-                          color: ColorsManager.grey,
                         ),
                       ),
                       hintText: "Re Password",
@@ -146,7 +140,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   BuildElevatedButton(
                     nameOfButton: "Create Account",
-                    onClicked: () {}, backGroundColor: ColorsManager.blue,
+                    onClicked: () {},
                   ),
                   Spacer(
                     flex: 2,
@@ -156,10 +150,7 @@ class _SignUpState extends State<SignUp> {
                     children: [
                       Text(
                         "Already Have Account ? ",
-                        style: GoogleFonts.inter(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: Theme.of(context).textTheme.titleSmall,
                       ),
                       InkWell(
                         onTap: () {
@@ -167,14 +158,7 @@ class _SignUpState extends State<SignUp> {
                         },
                         child: Text(
                           "Login",
-                          style: GoogleFonts.inter(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            decoration: TextDecoration.underline,
-                            fontStyle: FontStyle.italic,
-                            color: ColorsManager.blue,
-                            decorationColor: ColorsManager.blue,
-                          ),
+                          style: Theme.of(context).textTheme.displayLarge,
                         ),
                       ),
                     ],

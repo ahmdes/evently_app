@@ -31,7 +31,6 @@ class _MainLayoutState extends State<MainLayout> {
         },
         child: Icon(
           Icons.add_circle_outlined,
-          color: ColorsManager.blue,
           size: 57,
         ),
       ),

@@ -3,14 +3,14 @@ import 'dart:ui';
 class TabDesignDM {
   Color selectedTabBG,
       unSelectedTabBG,
-      selectedLabelColor,
-      unSelectedLabelColor,
       borderColor;
+  Color       ?selectedLabelColor,
+  unSelectedLabelColor;
   TabDesignDM({
     required this.selectedTabBG,
     required this.unSelectedTabBG,
-    required this.selectedLabelColor,
-    required this.unSelectedLabelColor,
+     this.selectedLabelColor,
+     this.unSelectedLabelColor,
     required this.borderColor,
   });
 }

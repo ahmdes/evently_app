@@ -41,20 +41,13 @@ class _OnBoardingState extends State<OnBoarding> {
             SizedBox(height:10,),
             Text(
               "Personalize Your Experience",
-              style: GoogleFonts.inter(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w700,
-                  color: ColorsManager.blue),
+              style: Theme.of(context).textTheme.titleMedium,
             ),
             SizedBox(height:10,),
             Expanded(
               child: Text(
                 "Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.",
-                style: GoogleFonts.inter(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w500,
-                  color: ColorsManager.dark,
-                ),
+                style: Theme.of(context).textTheme.titleSmall,
               ),
             ),
             SizedBox(height:10,),
@@ -62,11 +55,7 @@ class _OnBoardingState extends State<OnBoarding> {
               children: [
                 Text(
                   "Theme",
-                  style: GoogleFonts.inter(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.w500,
-                      color: ColorsManager.blue),
-                ),
+                  style: Theme.of(context).textTheme.displaySmall,),
                 Spacer(),
                 SizedBox(
                   height: 40.h,
@@ -103,12 +92,7 @@ class _OnBoardingState extends State<OnBoarding> {
               children: [
                 Text(
                   "Language",
-                  style: GoogleFonts.inter(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    color: ColorsManager.blue,
-                  ),
-                ),
+              style: Theme.of(context).textTheme.displaySmall,),
                 Spacer(),
                 SizedBox(
                   height: 40.h,
@@ -142,7 +126,7 @@ class _OnBoardingState extends State<OnBoarding> {
             SizedBox(height:10,),
             BuildElevatedButton(nameOfButton: "Let's Start", onClicked: (){
               Navigator.pushNamed(context, RoutesManager.onBoardingStart);
-            }, backGroundColor: ColorsManager.blue),
+            },),
             SizedBox(height:10,),
           ],
         ),

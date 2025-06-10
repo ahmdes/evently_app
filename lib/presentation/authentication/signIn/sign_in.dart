@@ -49,7 +49,6 @@ class _SignInState extends State<SignIn> {
                     textFieldDM: TextFieldDM(
                       prefixIcon: Icon(
                         Icons.email_rounded,
-                        color: ColorsManager.grey,
                       ),
                       suffixIcon: null,
                       hintText: "Email",
@@ -64,7 +63,6 @@ class _SignInState extends State<SignIn> {
                     textFieldDM: TextFieldDM(
                       prefixIcon: Icon(
                         Icons.lock,
-                        color: ColorsManager.grey,
                       ),
                       suffixIcon: IconButton(
                         onPressed: () {
@@ -79,7 +77,6 @@ class _SignInState extends State<SignIn> {
                         },
                         icon: Icon(
                           iconData,
-                          color: ColorsManager.grey,
                         ),
                       ),
                       hintText: "Password",
@@ -99,15 +96,7 @@ class _SignInState extends State<SignIn> {
                       },
                       child: Text(
                         "Forget Password?",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16,
-                          fontStyle: FontStyle.italic,
-                          decoration: TextDecoration.underline,
-                          color: ColorsManager.blue,
-                          decorationColor: ColorsManager.blue,
-                          decorationThickness: 2,
-                        ),
+                        style: Theme.of(context).textTheme.displayLarge,
                       ),
                     ),
                   ),
@@ -126,17 +115,14 @@ class _SignInState extends State<SignIn> {
                     nameOfButton: 'Login',
                     onClicked: () {
                       Navigator.pushNamed(context, RoutesManager.mainLayout);
-                    }, backGroundColor: ColorsManager.blue,
+                    },
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "Don't Have Account ? ",
-                        style: GoogleFonts.inter(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       InkWell(
                         onTap: () {
@@ -144,14 +130,7 @@ class _SignInState extends State<SignIn> {
                         },
                         child: Text(
                           "Create Account",
-                          style: GoogleFonts.inter(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            decoration: TextDecoration.underline,
-                            fontStyle: FontStyle.italic,
-                            color: ColorsManager.blue,
-                            decorationColor: ColorsManager.blue,
-                          ),
+                            style: Theme.of(context).textTheme.displayLarge,
                         ),
                       ),
                     ],
@@ -168,11 +147,8 @@ class _SignInState extends State<SignIn> {
                       ),
                       Text(
                         "Or",
-                        style: GoogleFonts.inter(
-                          color: ColorsManager.blue,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                        ),
+                        style: Theme.of(context).textTheme.displaySmall,
+
                       ),
                       SizedBox(
                         width: 129.w,
@@ -187,7 +163,7 @@ class _SignInState extends State<SignIn> {
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       fixedSize: Size(361.w, 57.h),
-                      backgroundColor: ColorsManager.light,
+                      backgroundColor: Colors.transparent,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16.r),
                         side: BorderSide(
@@ -209,11 +185,7 @@ class _SignInState extends State<SignIn> {
                         ),
                         Text(
                           "Login With Google",
-                          style: GoogleFonts.inter(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: ColorsManager.blue,
-                          ),
+                          style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ],
                     ),

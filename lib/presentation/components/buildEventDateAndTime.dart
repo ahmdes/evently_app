@@ -13,25 +13,16 @@ class BuildEventDateAndTime extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-
         buildEventDateAndTimeDM.icon,
         Spacer(),
         Text(
           buildEventDateAndTimeDM.nameOfEvent,
-          style: GoogleFonts.inter(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: ColorsManager.dark,
-          ),
+          style: Theme.of(context).textTheme.titleSmall,
         ),
         Spacer(flex:10,),
         Text(
           buildEventDateAndTimeDM.nameOfChosenEvent,
-          style: GoogleFonts.inter(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: ColorsManager.blue,
-          ),
+          style: Theme.of(context).textTheme.displaySmall,
         ),
 
       ],

@@ -34,11 +34,12 @@ class _CustomCreateEventState extends State<CustomCreateEvent> {
               16,
             ),
             child: Image.asset(AssetsManager.sport),
+
           ),
           CustomTabBar(
             tabDesignDM: TabDesignDM(
               selectedTabBG: ColorsManager.blue,
-              unSelectedTabBG: ColorsManager.light,
+              unSelectedTabBG: ColorsManager.transparent,
               selectedLabelColor: ColorsManager.light,
               unSelectedLabelColor: ColorsManager.blue,
               borderColor: ColorsManager.blue,
@@ -47,11 +48,7 @@ class _CustomCreateEventState extends State<CustomCreateEvent> {
           ),
           Text(
             "Title",
-            style: GoogleFonts.inter(
-              color: ColorsManager.dark,
-              fontWeight: FontWeight.w500,
-              fontSize: 16,
-            ),
+            style: Theme.of(context).textTheme.titleSmall,
           ),
           BuildTextFields(
             textFieldDM: TextFieldDM(
@@ -66,11 +63,7 @@ class _CustomCreateEventState extends State<CustomCreateEvent> {
           ),
           Text(
             "Description",
-            style: GoogleFonts.inter(
-              color: ColorsManager.dark,
-              fontWeight: FontWeight.w500,
-              fontSize: 16,
-            ),
+            style: Theme.of(context).textTheme.titleSmall,
           ),
           BuildTextFields(
             textFieldDM: TextFieldDM(
@@ -100,20 +93,15 @@ class _CustomCreateEventState extends State<CustomCreateEvent> {
           ),
           Text(
             "Location",
-            style: GoogleFonts.inter(
-              color: ColorsManager.dark,
-              fontWeight: FontWeight.w500,
-              fontSize: 16,
-            ),
+            style: Theme.of(context).textTheme.titleSmall,
           ),
           BuildTextFields(
             textFieldDM: TextFieldDM(
               prefixIcon: Icon(
                 Icons.my_location_outlined,
-                color: ColorsManager.grey,
               ),
               suffixIcon: IconButton(
-                icon: Icon(Icons.arrow_forward_ios_outlined,color: ColorsManager.grey,),
+                icon: Icon(Icons.arrow_forward_ios_outlined,),
                 onPressed: () {},
               ),
               hintText: "Choose Event Location",
@@ -122,7 +110,7 @@ class _CustomCreateEventState extends State<CustomCreateEvent> {
             ),
           ),
           BuildElevatedButton(nameOfButton: "Add Event", onClicked:(){
-          }, backGroundColor: ColorsManager.blue,)
+          },)
         ],
       ),
     );

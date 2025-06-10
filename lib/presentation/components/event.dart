@@ -44,6 +44,10 @@ class _EventState extends State<Event> {
             ),
             fit: BoxFit.cover,
           ),
+          border: Border.all(
+            color: ColorsManager.blue,
+            width: 2.w,
+          )
         ),
         child: Stack(
           children: [
@@ -57,7 +61,7 @@ class _EventState extends State<Event> {
                   borderRadius: BorderRadius.circular(
                     8.r,
                   ),
-                  color: ColorsManager.light,
+                  color: Theme.of(context).primaryColorLight,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -67,10 +71,7 @@ class _EventState extends State<Event> {
                       flex: 4,
                       child: Text(
                         widget.eventDM.eventName,
-                        style: GoogleFonts.inter(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14.sp,
-                        ),
+                        style: Theme.of(context).textTheme.titleSmall,
                       ),
                     ),
                     Expanded(
@@ -109,7 +110,7 @@ class _EventState extends State<Event> {
                 height: 62.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.r),
-                  color: widget.eventDM.backGroundOfDateContainer,
+                  color: Theme.of(context).primaryColorLight,
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -118,22 +119,14 @@ class _EventState extends State<Event> {
                       child: Text(
                         textAlign: TextAlign.center,
                         widget.eventDM.dateTime.day.toString(),
-                        style: GoogleFonts.inter(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.w700,
-                          color: ColorsManager.blue,
-                        ),
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ),
                     Expanded(
                       child: Text(
                         textAlign: TextAlign.center,
                         widget.eventDM.dateTime.getDateFormatFromDateTime,
-                        style: GoogleFonts.inter(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.w700,
-                          color: ColorsManager.blue,
-                        ),
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ),
                   ],
