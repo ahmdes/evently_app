@@ -1,9 +1,7 @@
 import 'package:evently_project/core/resources/assets_manager.dart';
 import 'package:evently_project/presentation/components/buildElevatedButton.dart';
 import 'package:flutter/material.dart';
-
-import '../../../core/resources/colors_manager.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class ResetPassword extends StatelessWidget {
   const ResetPassword({super.key});
 
@@ -12,7 +10,7 @@ class ResetPassword extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Forget Password",
+          AppLocalizations.of(context)!.forget_password,
         ),
       ),
       body: Padding(
@@ -29,7 +27,7 @@ class ResetPassword extends StatelessWidget {
               ),
               Spacer(),
               BuildElevatedButton(
-                nameOfButton: "Reset Password",
+                nameOfButton: AppLocalizations.of(context)!.reset_password,
                 onClicked: () {},
               ),
             ],

@@ -7,9 +7,9 @@ import 'package:evently_project/presentation/models/buildEventDateAndTimeDM.dart
 import 'package:evently_project/presentation/models/tab_design_dm.dart';
 import 'package:evently_project/presentation/models/text_field_dm.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/resources/constant_manager.dart';
 import '../../components/custom_tab_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomCreateEvent extends StatefulWidget {
   const CustomCreateEvent({super.key, required this.image});
@@ -47,7 +47,7 @@ class _CustomCreateEventState extends State<CustomCreateEvent> {
             tabs: ConstantManager.eventTabsWithOutAll,
           ),
           Text(
-            "Title",
+            AppLocalizations.of(context)!.title,
             style: Theme.of(context).textTheme.titleSmall,
           ),
           BuildTextFields(
@@ -56,20 +56,20 @@ class _CustomCreateEventState extends State<CustomCreateEvent> {
                 Icons.edit_note_sharp,
               ),
               suffixIcon: null,
-              hintText: 'Event Title',
+              hintText: AppLocalizations.of(context)!.event_title,
               obsecureText: false,
               heightOfTextField: null,
             ),
           ),
           Text(
-            "Description",
+            AppLocalizations.of(context)!.description,
             style: Theme.of(context).textTheme.titleSmall,
           ),
           BuildTextFields(
             textFieldDM: TextFieldDM(
               prefixIcon: null,
               suffixIcon: null,
-              hintText: '  Event Description',
+              hintText: AppLocalizations.of(context)!.event_description,
               obsecureText: false, heightOfTextField: null,
             ),
           ),
@@ -78,8 +78,8 @@ class _CustomCreateEventState extends State<CustomCreateEvent> {
               icon: Icon(
                 Icons.calendar_month_outlined,
               ),
-              nameOfChosenEvent: "Choose Date",
-              nameOfEvent: "Event Date",
+              nameOfChosenEvent: AppLocalizations.of(context)!.choose_date,
+              nameOfEvent: AppLocalizations.of(context)!.event_date,
             ),
           ),
           BuildEventDateAndTime(
@@ -87,12 +87,12 @@ class _CustomCreateEventState extends State<CustomCreateEvent> {
               icon: Icon(
                 Icons.watch_later_outlined,
               ),
-              nameOfChosenEvent: "Choose Time",
-              nameOfEvent: "Event Time",
+              nameOfChosenEvent: AppLocalizations.of(context)!.choose_time,
+              nameOfEvent: AppLocalizations.of(context)!.event_time,
             ),
           ),
           Text(
-            "Location",
+            AppLocalizations.of(context)!.location,
             style: Theme.of(context).textTheme.titleSmall,
           ),
           BuildTextFields(
@@ -104,12 +104,12 @@ class _CustomCreateEventState extends State<CustomCreateEvent> {
                 icon: Icon(Icons.arrow_forward_ios_outlined,),
                 onPressed: () {},
               ),
-              hintText: "Choose Event Location",
+              hintText: AppLocalizations.of(context)!.choose_event_location,
               obsecureText: false,
               heightOfTextField: null,
             ),
           ),
-          BuildElevatedButton(nameOfButton: "Add Event", onClicked:(){
+          BuildElevatedButton(nameOfButton: AppLocalizations.of(context)!.add_event, onClicked:(){
           },)
         ],
       ),

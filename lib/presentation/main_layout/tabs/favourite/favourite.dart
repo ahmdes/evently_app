@@ -3,6 +3,7 @@ import 'package:evently_project/presentation/models/text_field_dm.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/resources/constant_manager.dart';
 import '../../../components/event.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Favourite extends StatefulWidget {
   const Favourite({super.key});
@@ -26,7 +27,7 @@ class _FavouriteState extends State<Favourite> {
               textFieldDM: TextFieldDM(
                 prefixIcon: Icon(Icons.search),
                 suffixIcon: null,
-                hintText: "Search for Event",
+                hintText: AppLocalizations.of(context)!.search_for_event,
                 obsecureText: false, heightOfTextField: null,
               ),
             ),

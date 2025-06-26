@@ -1,11 +1,11 @@
 import 'package:evently_project/core/resources/colors_manager.dart';
-import 'package:evently_project/core/resources/constant_manager.dart';
 import 'package:evently_project/core/routes/routes_manager.dart';
 import 'package:evently_project/presentation/on_boarding/components/onBoardingWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../core/resources/assets_manager.dart';
+import 'models/on_boarding_dm.dart';
 
 class OnBoardingStart extends StatefulWidget {
   const OnBoardingStart({
@@ -20,6 +20,24 @@ class _OnBoardingStartState extends State<OnBoardingStart> {
   int currentIndex=0;
   @override
   Widget build(BuildContext context) {
+    List<OnBoardingDM> onBoardingInfo = [
+      OnBoardingDM(
+        image: AssetsManager.cat,
+        title: AppLocalizations.of(context)!.on_boarding_1_title,
+        subject:AppLocalizations.of(context)!.on_boarding_1_subject,
+      ),
+      OnBoardingDM(
+        image: AssetsManager.search,
+        title: AppLocalizations.of(context)!.on_boarding_2_title,
+        subject:AppLocalizations.of(context)!.on_boarding_2_subject,
+      ),
+      OnBoardingDM(
+        image: AssetsManager.social,
+        title: AppLocalizations.of(context)!.on_boarding_3_title,
+        subject:AppLocalizations.of(context)!.on_boarding_3_subject,
+      ),
+    ];
+
     return Scaffold(
       body: Padding(
         padding: REdgeInsets.all(25.0),
@@ -44,9 +62,9 @@ class _OnBoardingStartState extends State<OnBoardingStart> {
                 itemBuilder: (BuildContext context, index) {
                   index=currentIndex;
                   return OnBoardingWidget(
-                      onBoardingDM: ConstantManager.onBoardingInfo[index]);
+                      onBoardingDM: onBoardingInfo[index]);
                 },
-                itemCount: ConstantManager.onBoardingInfo.length,
+                itemCount:onBoardingInfo.length,
               ),
             ),
             Row(
@@ -68,7 +86,7 @@ class _OnBoardingStartState extends State<OnBoardingStart> {
                 Spacer(),
                   IconButton(
                     onPressed: () {
-                      if(currentIndex==ConstantManager.onBoardingInfo.length-1)
+                      if(currentIndex==onBoardingInfo.length-1)
                         {
                           Navigator.pushNamed(context, RoutesManager.signIn);
                         }

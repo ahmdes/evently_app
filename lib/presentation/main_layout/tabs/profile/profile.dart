@@ -1,11 +1,11 @@
+import 'package:evently_project/Provider/config_provider.dart';
 import 'package:evently_project/core/resources/assets_manager.dart';
 import 'package:evently_project/presentation/components/buildElevatedButton.dart';
-import 'package:evently_project/presentation/components/build_text_fields.dart';
-import 'package:evently_project/presentation/models/text_field_dm.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:provider/provider.dart';
 import '../../../../core/resources/colors_manager.dart';
 
 class Profile extends StatefulWidget {
@@ -16,15 +16,18 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  String dropDownValueLanguage = 'Arabic';
-  String dropDownValueTheme = 'Light';
+  late ConfigProvider configProvider;
+
   @override
   Widget build(BuildContext context) {
+    configProvider = Provider.of<ConfigProvider>(context);
+    String dropDownValueLanguage = configProvider.currentLanguage== Locale("ar")?AppLocalizations.of(context)!.arabic:"English";
+    String dropDownValueTheme = configProvider.currentTheme== ThemeMode.light?AppLocalizations.of(context)!.light:AppLocalizations.of(context)!.dark;
     List<DropdownMenuItem<String>> itemsOfLanguage = [
       DropdownMenuItem(
-        value: "Arabic",
+        value: AppLocalizations.of(context)!.arabic,
         child: Text(
-          "Arabic",
+          AppLocalizations.of(context)!.arabic,
           style: Theme.of(context).textTheme.titleMedium,
         ),
       ),
@@ -38,16 +41,16 @@ class _ProfileState extends State<Profile> {
     ];
     List<DropdownMenuItem<String>> itemsOfTheme = [
       DropdownMenuItem(
-        value: "Light",
+        value: AppLocalizations.of(context)!.light,
         child: Text(
-          "Light",
+          AppLocalizations.of(context)!.light,
           style: Theme.of(context).textTheme.titleMedium,
         ),
       ),
       DropdownMenuItem(
-        value: "Dark",
+        value: AppLocalizations.of(context)!.dark,
         child: Text(
-          "Dark",
+          AppLocalizations.of(context)!.dark,
           style: Theme.of(context).textTheme.titleMedium,
         ),
       ),
@@ -132,7 +135,7 @@ class _ProfileState extends State<Profile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Language",
+                    AppLocalizations.of(context)!.language,
                     style: GoogleFonts.inter(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w700,
@@ -140,9 +143,12 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                   buildDropdownButtonFormField(
-                      itemsOfLanguage, dropDownValueLanguage),
+                    itemsOfLanguage,
+                    dropDownValueLanguage,
+                    onLanguageChanged,
+                  ),
                   Text(
-                    "Theme",
+                    AppLocalizations.of(context)!.theme,
                     style: GoogleFonts.inter(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w700,
@@ -150,7 +156,10 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                   buildDropdownButtonFormField(
-                      itemsOfTheme, dropDownValueTheme),
+                    itemsOfTheme,
+                    dropDownValueTheme,
+                    onThemeChanged,
+                  ),
                 ],
               ),
             ),
@@ -161,7 +170,7 @@ class _ProfileState extends State<Profile> {
           Padding(
             padding: REdgeInsets.all(20.0),
             child: BuildElevatedButton(
-              nameOfButton: "Logout",
+              nameOfButton: AppLocalizations.of(context)!.logout,
               onClicked: () {},
             ),
           ),
@@ -171,8 +180,26 @@ class _ProfileState extends State<Profile> {
     );
   }
 
+  void onThemeChanged(String? newTheme) {
+    configProvider.configTheme(newTheme == AppLocalizations.of(context)!.light
+        ? ThemeMode.light
+        : ThemeMode.dark);
+
+  }
+
+  void onLanguageChanged(String? newLang) {
+    configProvider.configLanguage(
+        newLang == AppLocalizations.of(context)!.arabic
+            ? Locale("ar")
+            : Locale("en"));
+
+  }
+
   DropdownButtonFormField<String> buildDropdownButtonFormField(
-      List<DropdownMenuItem<String>> items, String value) {
+    List<DropdownMenuItem<String>> items,
+    String value,
+    void Function(String?) onClicked,
+  ) {
     return DropdownButtonFormField(
       decoration: InputDecoration(
         border: OutlineInputBorder(
@@ -191,10 +218,7 @@ class _ProfileState extends State<Profile> {
       icon: Icon(
         Icons.arrow_drop_down,
       ),
-      onChanged: (String? newValue) {
-        value = newValue!;
-        setState(() {});
-      },
+      onChanged: onClicked,
       items: items,
     );
   }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../../core/resources/assets_manager.dart';
 import '../models/on_boarding_dm.dart';
 
 class OnBoardingWidget extends StatelessWidget {

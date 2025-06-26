@@ -1,5 +1,16 @@
+import 'package:evently_project/Provider/config_provider.dart';
 import 'package:evently_project/evently_app.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-void main() {
-  runApp(EventlyApp());
+import 'package:provider/provider.dart';
+
+import 'firebase_options.dart';
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(ChangeNotifierProvider(
+      create: (context)=>ConfigProvider(),
+  child: EventlyApp()));
 }

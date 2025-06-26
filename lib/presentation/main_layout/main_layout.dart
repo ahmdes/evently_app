@@ -1,5 +1,4 @@
-import 'package:evently_project/core/resources/colors_manager.dart';
-import 'package:evently_project/core/routes/routes_manager.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';import 'package:evently_project/core/routes/routes_manager.dart';
 import 'package:evently_project/presentation/main_layout/tabs/home/home.dart';
 import 'package:evently_project/presentation/main_layout/tabs/favourite/favourite.dart';
 import 'package:evently_project/presentation/main_layout/tabs/map/map_location.dart';
@@ -49,19 +48,19 @@ class _MainLayoutState extends State<MainLayout> {
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.home_filled),
-          label: "Home",
+          label: AppLocalizations.of(context)!.home,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.location_on_outlined),
-          label: "Map",
+          label: AppLocalizations.of(context)!.map,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.heart_broken_outlined),
-          label: "Favourite",
+          label: AppLocalizations.of(context)!.favourite,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
-          label: "Profile",
+          label: AppLocalizations.of(context)!.profile,
         ),
       ],
     );

@@ -1,3 +1,5 @@
+import 'package:animated_toggle_switch/animated_toggle_switch.dart';
+import 'package:evently_project/Provider/config_provider.dart';
 import 'package:evently_project/core/resources/assets_manager.dart';
 import 'package:evently_project/core/resources/colors_manager.dart';
 import 'package:evently_project/core/routes/routes_manager.dart';
@@ -5,9 +7,11 @@ import 'package:evently_project/presentation/components/build_text_fields.dart';
 import 'package:evently_project/presentation/models/text_field_dm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 import '../../components/buildElevatedButton.dart';
+import '../../on_boarding/on_boarding.dart';
+enum CountryOption { egypt, america }
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -18,9 +22,12 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   bool obsecure = true;
+  CountryOption selectedCountry = CountryOption.egypt;
   IconData iconData = Icons.remove_red_eye_sharp;
+  late ConfigProvider provider;
   @override
   Widget build(BuildContext context) {
+    provider =Provider.of<ConfigProvider>(context);
     return Scaffold(
       body: Padding(
         padding: REdgeInsets.only(
@@ -51,7 +58,7 @@ class _SignInState extends State<SignIn> {
                         Icons.email_rounded,
                       ),
                       suffixIcon: null,
-                      hintText: "Email",
+                      hintText:AppLocalizations.of(context)!.email,
                       obsecureText: false,
                       heightOfTextField: null,
                     ),
@@ -79,7 +86,7 @@ class _SignInState extends State<SignIn> {
                           iconData,
                         ),
                       ),
-                      hintText: "Password",
+                      hintText: AppLocalizations.of(context)!.password,
                       obsecureText: obsecure,
                       heightOfTextField: null,
                     ),
@@ -95,7 +102,7 @@ class _SignInState extends State<SignIn> {
                             context, RoutesManager.resetPassword);
                       },
                       child: Text(
-                        "Forget Password?",
+                        AppLocalizations.of(context)!.forget_password,
                         style: Theme.of(context).textTheme.displayLarge,
                       ),
                     ),
@@ -112,7 +119,7 @@ class _SignInState extends State<SignIn> {
                 children: [
                   BuildElevatedButton(
                     
-                    nameOfButton: 'Login',
+                    nameOfButton: AppLocalizations.of(context)!.login,
                     onClicked: () {
                       Navigator.pushNamed(context, RoutesManager.mainLayout);
                     },
@@ -121,7 +128,7 @@ class _SignInState extends State<SignIn> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Don't Have Account ? ",
+                        AppLocalizations.of(context)!.do_not_have_account,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       InkWell(
@@ -129,7 +136,7 @@ class _SignInState extends State<SignIn> {
                           Navigator.pushNamed(context, RoutesManager.signUp);
                         },
                         child: Text(
-                          "Create Account",
+                          AppLocalizations.of(context)!.create_account,
                             style: Theme.of(context).textTheme.displayLarge,
                         ),
                       ),
@@ -146,7 +153,7 @@ class _SignInState extends State<SignIn> {
                         ),
                       ),
                       Text(
-                        "Or",
+                        AppLocalizations.of(context)!.or,
                         style: Theme.of(context).textTheme.displaySmall,
 
                       ),
@@ -184,7 +191,7 @@ class _SignInState extends State<SignIn> {
                           width: 10.w,
                         ),
                         Text(
-                          "Login With Google",
+                          AppLocalizations.of(context)!.login_with_google,
                           style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ],
@@ -193,22 +200,36 @@ class _SignInState extends State<SignIn> {
                 ],
               ),
             ),
-            Spacer(),
-            Container(
-              height: 30.h,
-              width: 73.w,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  border: Border.all(
-                    color: ColorsManager.blue,
-                    width: 2,
-                  )),
-              child: Row(
-                children: [
-                  Image.asset(AssetsManager.america),
-                  Spacer(),
-                  Image.asset(AssetsManager.egypt),
-                ],
+            Spacer(flex: 3,),
+            SizedBox(
+              height: 40.h,
+              width: 75.w,
+              child: AnimatedToggleSwitch<CountryOption>.dual(
+                current: selectedCountry,
+                first: CountryOption.egypt,
+                second: CountryOption.america,
+                onChanged: (value) {
+                  if(value==CountryOption.egypt) {
+                    provider.configLanguage(Locale("ar"));
+                    selectedCountry=CountryOption.egypt;
+                  } else {
+                    provider.configLanguage(Locale("en"));
+                    selectedCountry=CountryOption.america;
+                  }
+                },
+                iconBuilder: (value) => Image.asset(
+                  value == CountryOption.egypt
+                      ? AssetsManager.egypt
+                      : AssetsManager.america,
+                  width: 24.w,
+                  height: 24.h,
+                ),
+                style: ToggleStyle(
+                  indicatorColor: ColorsManager.blue,
+                  borderColor: ColorsManager.blue,
+                  borderRadius: BorderRadius.circular(30.r),
+                  backgroundColor: Colors.transparent,
+                ),
               ),
             ),
             Spacer(

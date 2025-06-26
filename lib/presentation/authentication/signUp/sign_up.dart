@@ -1,14 +1,16 @@
+import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:evently_project/presentation/components/buildElevatedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import '../../../Provider/config_provider.dart';
 import '../../../core/resources/assets_manager.dart';
 import '../../../core/resources/colors_manager.dart';
 import '../../../core/routes/routes_manager.dart';
 import '../../components/build_text_fields.dart';
 import '../../models/text_field_dm.dart';
-
+enum CountryOption { egypt, america }
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
 
@@ -17,15 +19,20 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  CountryOption selectedCountry = CountryOption.egypt;
+  IconData iconData = Icons.remove_red_eye_sharp;
+  late ConfigProvider provider;
+  @override
   bool obsecureOfPassword = true;
   IconData iconDataOfPassword = Icons.remove_red_eye_sharp;
   bool obsecureOfRePassword = true;
   IconData iconDataOfRePassword = Icons.remove_red_eye_sharp;
   @override
   Widget build(BuildContext context) {
+    provider =Provider.of<ConfigProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register"),
+        title: Text(AppLocalizations.of(context)!.register),
       ),
       body: Padding(
         padding: REdgeInsets.only(
@@ -56,7 +63,7 @@ class _SignUpState extends State<SignUp> {
                         Icons.person,
                       ),
                       suffixIcon: null,
-                      hintText: "Name",
+                      hintText: AppLocalizations.of(context)!.name,
                       obsecureText: false,
                       heightOfTextField: null,
                     ),
@@ -70,7 +77,7 @@ class _SignUpState extends State<SignUp> {
                         Icons.email_rounded,
                       ),
                       suffixIcon: null,
-                      hintText: "Email",
+                      hintText: AppLocalizations.of(context)!.email,
                       obsecureText: false,
                       heightOfTextField: null,
                     ),
@@ -100,7 +107,7 @@ class _SignUpState extends State<SignUp> {
                           iconDataOfPassword,
                         ),
                       ),
-                      hintText: "Password",
+                      hintText: AppLocalizations.of(context)!.password,
                       obsecureText: obsecureOfPassword,
                       heightOfTextField: null,
                     ),
@@ -130,7 +137,7 @@ class _SignUpState extends State<SignUp> {
                           iconDataOfRePassword,
                         ),
                       ),
-                      hintText: "Re Password",
+                      hintText: AppLocalizations.of(context)!.re_password,
                       obsecureText: obsecureOfRePassword,
                       heightOfTextField: null,
                     ),
@@ -139,7 +146,7 @@ class _SignUpState extends State<SignUp> {
                     flex: 4,
                   ),
                   BuildElevatedButton(
-                    nameOfButton: "Create Account",
+                    nameOfButton: AppLocalizations.of(context)!.create_account,
                     onClicked: () {},
                   ),
                   Spacer(
@@ -149,7 +156,7 @@ class _SignUpState extends State<SignUp> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Already Have Account ? ",
+                        AppLocalizations.of(context)!.already_have_account,
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                       InkWell(
@@ -157,7 +164,7 @@ class _SignUpState extends State<SignUp> {
                           Navigator.pushNamed(context, RoutesManager.signIn);
                         },
                         child: Text(
-                          "Login",
+                          AppLocalizations.of(context)!.login,
                           style: Theme.of(context).textTheme.displayLarge,
                         ),
                       ),
@@ -168,23 +175,38 @@ class _SignUpState extends State<SignUp> {
               ),
             ),
             Spacer(),
-            Container(
-              height: 30.h,
-              width: 73.w,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  border: Border.all(
-                    color: ColorsManager.blue,
-                    width: 2.w,
-                  )),
-              child: Row(
-                children: [
-                  Image.asset(AssetsManager.america),
-                  Spacer(),
-                  Image.asset(AssetsManager.egypt),
-                ],
+            SizedBox(
+              height: 40.h,
+              width: 75.w,
+              child: AnimatedToggleSwitch<CountryOption>.dual(
+                current: selectedCountry,
+                first: CountryOption.egypt,
+                second: CountryOption.america,
+                onChanged: (value) {
+                  if(value==CountryOption.egypt) {
+                    provider.configLanguage(Locale("ar"));
+                    selectedCountry=CountryOption.egypt;
+                  } else {
+                    provider.configLanguage(Locale("en"));
+                    selectedCountry=CountryOption.america;
+                  }
+                },
+                iconBuilder: (value) => Image.asset(
+                  value == CountryOption.egypt
+                      ? AssetsManager.egypt
+                      : AssetsManager.america,
+                  width: 24.w,
+                  height: 24.h,
+                ),
+                style: ToggleStyle(
+                  indicatorColor: ColorsManager.blue,
+                  borderColor: ColorsManager.blue,
+                  borderRadius: BorderRadius.circular(30.r),
+                  backgroundColor: Colors.transparent,
+                ),
               ),
             ),
+
             Spacer(
               flex: 10,
             ),
