@@ -1,3 +1,4 @@
+import 'package:evently_project/Provider/config_provider.dart';
 import 'package:evently_project/core/resources/colors_manager.dart';
 import 'package:evently_project/core/resources/constant_manager.dart';
 import 'package:evently_project/presentation/components/event.dart';
@@ -5,6 +6,7 @@ import 'package:evently_project/presentation/models/tab_design_dm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import '../../../components/custom_tab_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -15,8 +17,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+   IconData theme=Icons.dark_mode_outlined;
+  String language="EN";
+  late ConfigProvider provider ;
   @override
   Widget build(BuildContext context) {
+    provider=Provider.of<ConfigProvider>(context);
     return Column(
       children: [
         Container(
@@ -58,14 +64,31 @@ class _HomeState extends State<Home> {
                     ),
                     Spacer(),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        if(theme==Icons.light_mode_outlined)
+                          {provider.configTheme(ThemeMode.dark);
+                            theme=Icons.dark_mode_outlined;}
+                        else if(theme==Icons.dark_mode_outlined)
+                          {
+                            provider.configTheme(ThemeMode.light);
+                            theme=Icons.light_mode_outlined;
+                          }
+                      },
                       icon: Icon(
-                        Icons.light_mode_outlined,
+                        theme,
                         size: 30,
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        if(language=="EN") {
+                          provider.configLanguage(Locale("ar"));
+                          language="AR";
+                        } else if(language=="AR") {
+                          provider.configLanguage(Locale("EN"));
+                          language="EN";
+                        }
+                      },
                       style: IconButton.styleFrom(
                         backgroundColor: ColorsManager.light,
                           shape: RoundedRectangleBorder(
@@ -74,7 +97,7 @@ class _HomeState extends State<Home> {
                             ),
                           )),
                       icon: Text(
-                        "EN",
+                        language,
                         style: Theme.of(context).textTheme.displaySmall,
                       ),
                     ),
