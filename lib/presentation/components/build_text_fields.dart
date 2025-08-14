@@ -1,6 +1,7 @@
 import 'package:evently_project/presentation/models/text_field_dm.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import '../../core/resources/colors_manager.dart';
 
 class BuildTextFields extends StatelessWidget {
   const BuildTextFields({super.key,required this.textFieldDM});
@@ -8,12 +9,21 @@ class BuildTextFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+        color: ColorsManager.blue,
+      ),
+      validator: textFieldDM.validate,
+      controller: textFieldDM.controller,
       obscureText: textFieldDM.obsecureText,
       decoration: InputDecoration(
         prefixIcon: textFieldDM.prefixIcon,
         hintText: textFieldDM.hintText,
         suffixIcon: textFieldDM.suffixIcon,
       ),
+      onChanged: textFieldDM.onChanged,
+
     );
   }
 }

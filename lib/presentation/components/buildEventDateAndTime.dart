@@ -1,14 +1,14 @@
-import 'package:evently_project/core/resources/colors_manager.dart';
 import 'package:evently_project/presentation/models/buildEventDateAndTimeDM.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class BuildEventDateAndTime extends StatelessWidget {
   const BuildEventDateAndTime({
     super.key,
     required this.buildEventDateAndTimeDM,
+    required this.onClicked,
   });
   final BuildEventDateAndTimeDM buildEventDateAndTimeDM;
+  final void Function() onClicked;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -20,9 +20,12 @@ class BuildEventDateAndTime extends StatelessWidget {
           style: Theme.of(context).textTheme.titleSmall,
         ),
         Spacer(flex:10,),
-        Text(
-          buildEventDateAndTimeDM.nameOfChosenEvent,
-          style: Theme.of(context).textTheme.displaySmall,
+        GestureDetector(
+          onTap: onClicked,
+          child: Text(
+            buildEventDateAndTimeDM.nameOfChosenEvent,
+            style: Theme.of(context).textTheme.displaySmall,
+          ),
         ),
 
       ],

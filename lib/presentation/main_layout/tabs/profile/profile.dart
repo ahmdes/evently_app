@@ -1,6 +1,8 @@
 import 'package:evently_project/Provider/config_provider.dart';
 import 'package:evently_project/core/resources/assets_manager.dart';
+import 'package:evently_project/core/routes/routes_manager.dart';
 import 'package:evently_project/presentation/components/buildElevatedButton.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,8 +23,13 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     configProvider = Provider.of<ConfigProvider>(context);
-    String dropDownValueLanguage = configProvider.currentLanguage== Locale("ar")?AppLocalizations.of(context)!.arabic:"English";
-    String dropDownValueTheme = configProvider.currentTheme== ThemeMode.light?AppLocalizations.of(context)!.light:AppLocalizations.of(context)!.dark;
+    String dropDownValueLanguage =
+        configProvider.currentLanguage == Locale("ar")
+            ? AppLocalizations.of(context)!.arabic
+            : "English";
+    String dropDownValueTheme = configProvider.currentTheme == ThemeMode.light
+        ? AppLocalizations.of(context)!.light
+        : AppLocalizations.of(context)!.dark;
     List<DropdownMenuItem<String>> itemsOfLanguage = [
       DropdownMenuItem(
         value: AppLocalizations.of(context)!.arabic,
@@ -105,7 +112,7 @@ class _ProfileState extends State<Profile> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "John Safwat",
+                        configProvider.currentUser!.name,
                         style: GoogleFonts.inter(
                           fontWeight: FontWeight.w700,
                           fontSize: 24.sp,
@@ -113,7 +120,7 @@ class _ProfileState extends State<Profile> {
                         ),
                       ),
                       Text(
-                        "johnsafwat.route@gmail\n.com",
+                        configProvider.currentUser!.email,
                         style: GoogleFonts.inter(
                           fontWeight: FontWeight.w500,
                           fontSize: 16.sp,
@@ -171,7 +178,43 @@ class _ProfileState extends State<Profile> {
             padding: REdgeInsets.all(20.0),
             child: BuildElevatedButton(
               nameOfButton: AppLocalizations.of(context)!.logout,
-              onClicked: () {},
+              onClicked: () {
+                showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                          backgroundColor: ColorsManager.grey,
+                          content: Text(
+                            "Are you sure you want to log out ?",
+                            style: Theme.of(context).textTheme.displayMedium,
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                FirebaseAuth.instance.signOut();
+                                configProvider.currentUser = null;
+                                Navigator.pop(context);
+                                Navigator.pushNamed(
+                                    context, RoutesManager.signIn);
+                              },
+                              child: Text(
+                                "Ok",
+                                style:
+                                    Theme.of(context).textTheme.displayMedium,
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(
+                                "Cancel",
+                                style:
+                                    Theme.of(context).textTheme.displayMedium,
+                              ),
+                            ),
+                          ],
+                        ));
+              },
             ),
           ),
           Spacer(),
@@ -184,7 +227,6 @@ class _ProfileState extends State<Profile> {
     configProvider.configTheme(newTheme == AppLocalizations.of(context)!.light
         ? ThemeMode.light
         : ThemeMode.dark);
-
   }
 
   void onLanguageChanged(String? newLang) {
@@ -192,7 +234,6 @@ class _ProfileState extends State<Profile> {
         newLang == AppLocalizations.of(context)!.arabic
             ? Locale("ar")
             : Locale("en"));
-
   }
 
   DropdownButtonFormField<String> buildDropdownButtonFormField(

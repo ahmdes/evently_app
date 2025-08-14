@@ -21,5 +21,8 @@ class AssetsManager{
   static const String cat="$base/cat_on_boarding.png";
   static const String search="$base/search.png";
   static const String social="$base/social.png";
+  static const String eating="$base/eating.png";
+  static const String holiday="$base/holiday.png";
+
 
 }

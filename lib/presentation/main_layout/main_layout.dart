@@ -1,4 +1,5 @@
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';import 'package:evently_project/core/routes/routes_manager.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:evently_project/core/routes/routes_manager.dart';
 import 'package:evently_project/presentation/main_layout/tabs/home/home.dart';
 import 'package:evently_project/presentation/main_layout/tabs/favourite/favourite.dart';
 import 'package:evently_project/presentation/main_layout/tabs/map/map_location.dart';
@@ -11,6 +12,7 @@ class MainLayout extends StatefulWidget {
   @override
   State<MainLayout> createState() => _MainLayoutState();
 }
+
 
 class _MainLayoutState extends State<MainLayout> {
   List<Widget> tabs = [
@@ -33,7 +35,10 @@ class _MainLayoutState extends State<MainLayout> {
           size: 57,
         ),
       ),
-      body: tabs[selectedIndex],
+      body: IndexedStack(
+        index: selectedIndex,
+        children: tabs,
+      ),
       bottomNavigationBar: buildBottomNavigationBar(),
     );
   }
@@ -55,7 +60,7 @@ class _MainLayoutState extends State<MainLayout> {
           label: AppLocalizations.of(context)!.map,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.heart_broken_outlined),
+          icon: Icon(Icons.favorite_border),
           label: AppLocalizations.of(context)!.favourite,
         ),
         BottomNavigationBarItem(

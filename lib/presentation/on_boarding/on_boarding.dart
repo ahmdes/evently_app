@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 enum CountryOption { egypt, america }
 
@@ -21,7 +20,7 @@ class OnBoarding extends StatefulWidget {
 }
 
 class _OnBoardingState extends State<OnBoarding> {
-  CountryOption selectedCountry = CountryOption.egypt;
+  CountryOption selectedCountry = CountryOption.america;
   ThemeOption selectedTheme = ThemeOption.light;
   late ConfigProvider provider;
   @override

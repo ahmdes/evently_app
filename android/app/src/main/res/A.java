@@ -1,0 +1,1 @@
+pub global run rename --appname "New App Name"

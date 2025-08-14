@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 class BuildEventDateAndTimeDM {
   Icon icon;
-  String nameOfEvent, nameOfChosenEvent;
+  String nameOfEvent;
+      String nameOfChosenEvent;
   BuildEventDateAndTimeDM({
     required this.icon,
     required this.nameOfChosenEvent,

@@ -104,6 +104,11 @@ class ThemesManager {
       iconColor: ColorsManager.grey,
       prefixIconColor: ColorsManager.grey,
       suffixIconColor: ColorsManager.grey,
+      prefixStyle: TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 16,
+        color: ColorsManager.blue,
+      ),
       hintStyle: TextStyle(
         fontWeight: FontWeight.w500,
         fontSize: 16,

@@ -1,5 +1,6 @@
 import 'package:evently_project/core/resources/colors_manager.dart';
 import 'package:evently_project/presentation/models/button_of_events_dm.dart';
+import 'package:evently_project/presentation/models/category_d_m.dart';
 import 'package:evently_project/presentation/models/event_d_m.dart';
 import 'assets_manager.dart';
 
@@ -18,11 +19,11 @@ class ConstantManager {
       image: AssetsManager.birthdayIcon,
     ),
     ButtonOfEventsDM(
-      text: "Eating",
+      text: "Exception",
       image: AssetsManager.bosla,
     ),
     ButtonOfEventsDM(
-      text: "Holiday",
+      text: "meeting",
       image: AssetsManager.bosla,
     ),
   ];
@@ -36,38 +37,87 @@ class ConstantManager {
       image: AssetsManager.birthdayIcon,
     ),
     ButtonOfEventsDM(
-      text: "Eating",
+      text: "Exception",
       image: AssetsManager.bosla,
     ),
     ButtonOfEventsDM(
-      text: "Holiday",
+      text: "meeting",
       image: AssetsManager.bosla,
     ),
   ];
-  static List<EventDM> events = [
-    EventDM(
-      image: AssetsManager.birthday,
-      eventName: "This is a Birthday Party",
-      backGroundOfDateContainer: ColorsManager.light,
-      favorite: AssetsManager.heartIcon,
-    ),
-    EventDM(
+  static List<CategoryDM> categoriesWithOutAll = [
+    CategoryDM(
       image: AssetsManager.sport,
-      eventName: "This is a Football match",
       backGroundOfDateContainer: ColorsManager.light,
       favorite: AssetsManager.heartIcon,
+      id: 1,
+      bgImage: AssetsManager.sport,
     ),
-    EventDM(
+    CategoryDM(
+      image: AssetsManager.birthday,
+      backGroundOfDateContainer: ColorsManager.light,
+      favorite: AssetsManager.heartIcon,
+      id: 2,
+      bgImage: AssetsManager.birthday,
+    ),
+    CategoryDM(
       image: AssetsManager.exception,
-      eventName: "Meeting for Updating The Development Method",
       backGroundOfDateContainer: ColorsManager.light,
       favorite: AssetsManager.heartIcon,
+      id: 3,
+      bgImage: AssetsManager.exception,
     ),
-    EventDM(
+    CategoryDM(
       image: AssetsManager.meeting,
-      eventName: "Meeting for Updating The Development Method",
       backGroundOfDateContainer: ColorsManager.light,
       favorite: AssetsManager.heartIcon,
+      id: 4,
+      bgImage: AssetsManager.meeting,
+    ),
+  ];
+
+  static List<CategoryDM> categories = [
+    CategoryDM(
+      image: AssetsManager.sport,
+      backGroundOfDateContainer: ColorsManager.light,
+      favorite: AssetsManager.heartIcon,
+      id: 0,
+      bgImage: AssetsManager.sport,
+    ),
+    CategoryDM(
+      image: AssetsManager.sport,
+      backGroundOfDateContainer: ColorsManager.light,
+      favorite: AssetsManager.heartIcon,
+      id: 1,
+      bgImage: AssetsManager.sport,
+    ),
+    CategoryDM(
+      image: AssetsManager.sport,
+      backGroundOfDateContainer: ColorsManager.light,
+      favorite: AssetsManager.heartIcon,
+      id: 2,
+      bgImage: AssetsManager.sport,
+    ),
+    CategoryDM(
+      image: AssetsManager.birthday,
+      backGroundOfDateContainer: ColorsManager.light,
+      favorite: AssetsManager.heartIcon,
+      id: 3,
+      bgImage: AssetsManager.birthday,
+    ),
+    CategoryDM(
+      image: AssetsManager.exception,
+      backGroundOfDateContainer: ColorsManager.light,
+      favorite: AssetsManager.heartIcon,
+      id: 4,
+      bgImage: AssetsManager.exception,
+    ),
+    CategoryDM(
+      image: AssetsManager.meeting,
+      backGroundOfDateContainer: ColorsManager.light,
+      favorite: AssetsManager.heartIcon,
+      id: 5,
+      bgImage: AssetsManager.meeting,
     ),
   ];
   static List<EventDM> favoriteEvents = [];
