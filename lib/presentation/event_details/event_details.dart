@@ -1,7 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evently_project/Provider/config_provider.dart';
 import 'package:evently_project/core/extensions/date.dart';
-import 'package:evently_project/core/models/user_dm.dart';
 import 'package:evently_project/core/resources/colors_manager.dart';
 import 'package:evently_project/firebase_service/firebase_service.dart';
 import 'package:evently_project/presentation/edit_event/edit_event.dart';
@@ -10,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class EventDetails extends StatefulWidget {
   const EventDetails({super.key, required this.eventDM});
   final EventDM eventDM;
@@ -26,7 +24,7 @@ class _EventDetailsState extends State<EventDetails> {
     provider = Provider.of<ConfigProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Event Details"),
+        title: Text(AppLocalizations.of(context)!.event_details),
         actions: provider.currentUser?.id == widget.eventDM.uId
             ? [
                 IconButton(
@@ -71,7 +69,7 @@ class _EventDetailsState extends State<EventDetails> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(15.r),
                 child: Image.asset(
                   widget.eventDM.bgImage,
                 ),
@@ -89,17 +87,17 @@ class _EventDetailsState extends State<EventDetails> {
               Container(
                 height: 60.h,
                 decoration: BoxDecoration(
-                  border: Border.all(color: ColorsManager.blue, width: 2),
+                  border: Border.all(color: ColorsManager.blue, width: 2.w),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  padding: REdgeInsets.symmetric(horizontal: 5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        height: 50,
-                        width: 50,
+                        height: 50.h,
+                        width: 50.w,
                         decoration: BoxDecoration(
                           color: ColorsManager.blue,
                           borderRadius: BorderRadius.circular(12),
@@ -136,20 +134,20 @@ class _EventDetailsState extends State<EventDetails> {
               Container(
                 height: 60.h,
                 decoration: BoxDecoration(
-                  border: Border.all(color: ColorsManager.blue, width: 2),
+                  border: Border.all(color: ColorsManager.blue, width: 2.w),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  padding: REdgeInsets.symmetric(horizontal: 5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        height: 50,
-                        width: 50,
+                        height: 50.h,
+                        width: 50.w,
                         decoration: BoxDecoration(
                           color: ColorsManager.blue,
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(12.r),
                         ),
                         child: Icon(
                           Icons.my_location,
@@ -188,7 +186,7 @@ class _EventDetailsState extends State<EventDetails> {
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(
                     color: ColorsManager.blue,
-                    width: 2,
+                    width: 2.w,
                   ),
                 ),
                 child: ClipRRect(
@@ -210,10 +208,10 @@ class _EventDetailsState extends State<EventDetails> {
                 ),
               ),
               SizedBox(
-                height: 15,
+                height: 15.h,
               ),
               Text(
-                "Description",
+                AppLocalizations.of(context)!.description,
                 style: Theme.of(context).textTheme.titleSmall,
               ),
               SizedBox(
@@ -236,7 +234,7 @@ class _EventDetailsState extends State<EventDetails> {
         builder: (context) => AlertDialog(
               backgroundColor: ColorsManager.grey,
               content: Text(
-                "Are you sure you want to delete this event",
+                AppLocalizations.of(context)!.sure_of_deleting_event,
                 style: Theme.of(context).textTheme.displayMedium,
               ),
               actions: [
@@ -246,7 +244,7 @@ class _EventDetailsState extends State<EventDetails> {
                     Navigator.pop(context);
                   },
                   child: Text(
-                    "Ok",
+                    AppLocalizations.of(context)!.ok,
                     style: Theme.of(context).textTheme.displayMedium,
                   ),
                 ),
@@ -255,7 +253,7 @@ class _EventDetailsState extends State<EventDetails> {
                     Navigator.pop(context);
                   },
                   child: Text(
-                    "Cancel",
+                    AppLocalizations.of(context)!.cancel,
                     style: Theme.of(context).textTheme.displayMedium,
                   ),
                 ),

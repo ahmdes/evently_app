@@ -101,7 +101,7 @@ class _SignUpState extends State<SignUp> {
                           heightOfTextField: null,
                           validate: (String? input) {
                             if (!ButtonTextValidation.isValidateString(input)) {
-                              return "please , enter your name";
+                              return AppLocalizations.of(context)!.enter_your_name;
                             }
                             return null;
                           }),
@@ -121,7 +121,7 @@ class _SignUpState extends State<SignUp> {
                           heightOfTextField: null,
                           validate: (String? email) {
                             if (!email!.isValidEmail()) {
-                              return "Please enter a valid email";
+                              return AppLocalizations.of(context)!.enter_valid_email;
                             }
                             return null;
                           }),
@@ -158,7 +158,7 @@ class _SignUpState extends State<SignUp> {
                           heightOfTextField: null,
                           validate: (String? password) {
                             if (!password!.isValidPassword()) {
-                              return "please , enter valid password";
+                              return AppLocalizations.of(context)!.enter_valid_password;
                             }
                             return null;
                           }),
@@ -196,7 +196,7 @@ class _SignUpState extends State<SignUp> {
                           validate: (String? rePassword) {
                             if (!(rePassword == passwordController.text &&
                                 rePassword != null)) {
-                              return "password not match";
+                              return AppLocalizations.of(context)!.password_matching;
                             }
                             return null;
                           }),

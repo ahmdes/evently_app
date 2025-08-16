@@ -80,7 +80,7 @@ class _SignInState extends State<SignIn> {
                 height: 30.h,
               ),
               SizedBox(
-                height: 163.h,
+                height: 170.h,
                 width: 361.w,
                 child: Column(
                   children: [
@@ -96,7 +96,7 @@ class _SignInState extends State<SignIn> {
                           heightOfTextField: null,
                           validate: (String? email) {
                             if (!email!.isValidEmail()) {
-                              return "Please enter a valid email";
+                              return AppLocalizations.of(context)!.enter_valid_email;
                             }
                             return null;
                           }),
@@ -130,7 +130,7 @@ class _SignInState extends State<SignIn> {
                           heightOfTextField: null,
                           validate: (String? password) {
                             if (!password!.isValidPassword()) {
-                              return "please , enter valid password";
+                              return AppLocalizations.of(context)!.enter_valid_password;
                             }
                             return null;
                           }),

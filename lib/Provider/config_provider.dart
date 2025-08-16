@@ -1,4 +1,5 @@
 import 'package:evently_project/core/models/user_dm.dart';
+import 'package:evently_project/core/resources/assets_manager.dart';
 import 'package:evently_project/presentation/models/event_d_m.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -9,7 +10,7 @@ import '../firebase_service/firebase_service.dart';
 class ConfigProvider extends ChangeNotifier {
   ThemeMode currentTheme = ThemeMode.light;
   Locale currentLanguage = Locale("en");
-  UserDM? currentUser = UserDM(id: "", name: "", email: "", favoriteEvents: []);
+  UserDM? currentUser = UserDM(id: "", name: "", email: "", favoriteEvents: [], );
   LatLng currentLocation = LatLng(37.43296265331129, -122.08832357078792);
   List<EventDM>favoriteEvents=[];
   String markerTitle = "Hello";
@@ -132,4 +133,5 @@ class ConfigProvider extends ChangeNotifier {
     notifyListeners();
     return markerTitle;
   }
+
 }

@@ -83,9 +83,8 @@ class FirebaseService {
 
     print("Favorite IDs: $ids");
 
-    QuerySnapshot<EventDM> querySnapshot = await eventCollection
-        .where(FieldPath.documentId, whereIn: ids)
-        .get();
+    QuerySnapshot<EventDM> querySnapshot =
+        await eventCollection.where(FieldPath.documentId, whereIn: ids).get();
 
     print("Fetched ${querySnapshot.docs.length} events from Firestore.");
 
@@ -96,7 +95,6 @@ class FirebaseService {
     return favoriteList;
   }
 
-
   static Future<void> addUserToFireStore(UserDM user) {
     CollectionReference<UserDM> userCollection = getUsersCollection();
     DocumentReference<UserDM> userDoc = userCollection.doc(user.id);
@@ -104,15 +102,22 @@ class FirebaseService {
   }
 
   static Future<void> signUp(
-      String email, String password, BuildContext context, String name) async {
+    String email,
+    String password,
+    BuildContext context,
+    String name,
+  ) async {
+    ConfigProvider provider =
+        Provider.of<ConfigProvider>(context, listen: false);
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       UserDM userDM = UserDM(
-          id: userCredential.user!.uid,
-          name: name,
-          email: email,
-          favoriteEvents: []);
+        id: userCredential.user!.uid,
+        name: name,
+        email: email,
+        favoriteEvents: [],
+      );
       await addUserToFireStore(userDM);
       DialogUtils.showLoadingDialog(context, message: "Successfully");
     } on FirebaseAuthException catch (e) {
@@ -243,16 +248,18 @@ class FirebaseService {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       if (googleUser == null) return null;
 
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-      ConfigProvider provider = Provider.of<ConfigProvider>(context, listen: false);
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+      ConfigProvider provider =
+          Provider.of<ConfigProvider>(context, listen: false);
 
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
-
       // تسجيل الدخول
-      UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
 
       // جلب بيانات المستخدم من Firestore
       UserDM? existingUser;
@@ -285,10 +292,14 @@ class FirebaseService {
     }
   }
 
-
   static Future<void> deleteEvent(EventDM event) async {
     CollectionReference<EventDM> collectionReference = getEventsCollection();
     DocumentReference<EventDM> document = collectionReference.doc(event.id);
     await document.delete();
   }
+
+  static Future<void> resetPassword(String email) async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+  }
+
 }

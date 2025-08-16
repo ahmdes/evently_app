@@ -49,5 +49,19 @@
   "on_boarding_start_subject": "اختر السمة واللغة المفضلة لديك لبدء تجربة مريحة ومصممة حسب أسلوبك.",
   "plz_Enter_title" : "من فضلك , أدخل العنوان",
   "plz_Enter_description" : "من فضلك , أدخل الوصف",
-  "plzEnterMoreThanFiveLetters": "يرجى إدخال أكثر من 5 أحرف، وليس مسافات"
+  "plzEnterMoreThanFiveLetters": "يرجى إدخال أكثر من 5 أحرف، وليس مسافات",
+  "enter_valid_email": "من فضلك أدخل ايميل صالح",
+  "reset_done": "افحص رسائل الايميل الخاص يك واعد ادخال كلمة المرور",
+  "enter_valid_password":"من فضلك أدخل مرور صالحة",
+  "enter_your_name": "من فضلك أدخل الاسم",
+  "password_matching":"كلمة المرور غير متوافقة",
+  "no_favorite_events": "لا يوجد أحداث مفضلة",
+  "sure_of_log_out":"هل انت متأكد من تسجيل الخروج ؟",
+  "ok": "نعم",
+  "cancel": "اغلاق",
+  "description_letters":"من فضلك , أدخل أكثر من خمس حروف , لا يوجد مسافات",
+  "event_details": "تفاصيل الحدث",
+  "sure_of_deleting_event":"هل أنت متأكد من أنك تريد حذف الحدث",
+  "update_event": "تحديث بيانات الحدث",
+  "edit_event": "تعديل الحدث"
 }

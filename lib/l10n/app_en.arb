@@ -47,5 +47,19 @@
   "on_boarding_3_title": "Connect with Friends & Share Moments",
   "on_boarding_3_subject": "Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories.",
   "on_boarding_start_title":"Personalize Your Experience",
-  "on_boarding_start_subject":"Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style."
+  "on_boarding_start_subject":"Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.",
+  "enter_valid_email": "Please enter a valid email",
+  "enter_valid_password": "Please enter a valid password",
+  "reset_done":  "look at your gmail , you can reset password",
+  "enter_your_name": "Please , enter your name",
+  "password_matching":"password not match",
+  "no_favorite_events": "No Favorite Events",
+  "sure_of_log_out":"Are you sure you want to log out ?",
+  "ok": "OK",
+  "cancel": "Cancel",
+  "description_letters":"Please , Enter more than 5 letters , Not Spaces",
+  "event_details": "Event Details",
+  "sure_of_deleting_event":"Are you sure you want to delete this event",
+  "update_event": "Update Event",
+  "edit_event": "Edit Event"
 }

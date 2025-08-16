@@ -108,7 +108,7 @@ class _OnBoardingState extends State<OnBoarding> {
               ],
             ),
             SizedBox(
-              height: 10,
+              height: 10.h,
             ),
             Row(
               children: [

@@ -1,17 +1,18 @@
-import 'package:evently_project/firebase_service/firebase_service.dart';
 import 'package:evently_project/presentation/components/build_text_fields.dart';
-import 'package:evently_project/presentation/models/event_d_m.dart';
 import 'package:evently_project/presentation/models/text_field_dm.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../../../Provider/config_provider.dart';
 import '../../../components/category.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class Favourite extends StatefulWidget {
   const Favourite({super.key});
   @override
   State<Favourite> createState() => _FavouriteState();
 }
+
 class _FavouriteState extends State<Favourite> {
   late ConfigProvider configProvider;
   @override
@@ -20,18 +21,19 @@ class _FavouriteState extends State<Favourite> {
     // TODO: implement initState
     super.initState();
   }
+
   String searchKey = "";
   @override
   Widget build(BuildContext context) {
     configProvider = Provider.of<ConfigProvider>(context);
     return Padding(
-      padding: const EdgeInsets.only(
+      padding: REdgeInsets.only(
         top: 50,
       ),
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(
+            padding: REdgeInsets.symmetric(
               horizontal: 10,
             ),
             child: BuildTextFields(
@@ -49,15 +51,17 @@ class _FavouriteState extends State<Favourite> {
           ),
           (configProvider.favoriteEvents.isEmpty)
               ? Text(
-                "No Favorite Events",
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleMedium,
-              )
+                  AppLocalizations.of(context)!.no_favorite_events,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleMedium,
+                )
               : Expanded(
                   child: ListView.builder(
                     itemBuilder: (context, index) {
                       return Category(
-                        eventDM: configProvider.favoriteEvents[index], isFavorite:configProvider.currentUser!.favoriteEvents.contains(configProvider.favoriteEvents[index].id),
+                        eventDM: configProvider.favoriteEvents[index],
+                        isFavorite: configProvider.currentUser!.favoriteEvents
+                            .contains(configProvider.favoriteEvents[index].id),
                       );
                     },
                     itemCount: configProvider.favoriteEvents.length,
@@ -68,15 +72,18 @@ class _FavouriteState extends State<Favourite> {
     );
   }
 
-
   void getFavoriteEventsBySearchKey(String searchKey) {
     if (searchKey.trim().isEmpty) {
       configProvider.favoriteEvents = configProvider.favoriteEvents;
     } else {
-      configProvider.favoriteEvents =configProvider.favoriteEvents
-          .where((event) =>
-              event.title.toLowerCase().contains(searchKey.toLowerCase()) ||
-              event.description.toLowerCase().contains(searchKey.toLowerCase(),),)
+      configProvider.favoriteEvents = configProvider.favoriteEvents
+          .where(
+            (event) =>
+                event.title.toLowerCase().contains(searchKey.toLowerCase()) ||
+                event.description.toLowerCase().contains(
+                      searchKey.toLowerCase(),
+                    ),
+          )
           .toList();
     }
     setState(() {});

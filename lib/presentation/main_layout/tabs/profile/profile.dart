@@ -1,6 +1,5 @@
 import 'package:evently_project/Provider/config_provider.dart';
 import 'package:evently_project/core/resources/assets_manager.dart';
-import 'package:evently_project/core/routes/routes_manager.dart';
 import 'package:evently_project/presentation/components/buildElevatedButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -9,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/resources/colors_manager.dart';
+import '../../../../core/routes/routes_manager.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -19,7 +19,6 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   late ConfigProvider configProvider;
-
   @override
   Widget build(BuildContext context) {
     configProvider = Provider.of<ConfigProvider>(context);
@@ -100,12 +99,9 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                     child: SizedBox(
-                      height: 120.h,
-                      width: 120.w,
-                      child: Image.asset(
-                        AssetsManager.routeImage,
-                      ),
-                    ),
+                        height: 120.h,
+                        width: 120.w,
+                        child: Image.asset(AssetsManager.personProfileIMage)),
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -136,7 +132,7 @@ class _ProfileState extends State<Profile> {
           Padding(
             padding: REdgeInsets.all(20),
             child: SizedBox(
-              height: 220,
+              height: 220.h,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,7 +180,7 @@ class _ProfileState extends State<Profile> {
                     builder: (context) => AlertDialog(
                           backgroundColor: ColorsManager.grey,
                           content: Text(
-                            "Are you sure you want to log out ?",
+                            AppLocalizations.of(context)!.sure_of_log_out,
                             style: Theme.of(context).textTheme.displayMedium,
                           ),
                           actions: [
@@ -197,7 +193,7 @@ class _ProfileState extends State<Profile> {
                                     context, RoutesManager.signIn);
                               },
                               child: Text(
-                                "Ok",
+                                AppLocalizations.of(context)!.ok,
                                 style:
                                     Theme.of(context).textTheme.displayMedium,
                               ),
@@ -207,7 +203,7 @@ class _ProfileState extends State<Profile> {
                                 Navigator.pop(context);
                               },
                               child: Text(
-                                "Cancel",
+                                AppLocalizations.of(context)!.cancel,
                                 style:
                                     Theme.of(context).textTheme.displayMedium,
                               ),

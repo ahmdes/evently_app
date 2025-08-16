@@ -23,6 +23,5 @@ class AssetsManager{
   static const String social="$base/social.png";
   static const String eating="$base/eating.png";
   static const String holiday="$base/holiday.png";
-
-
+  static const String personProfileIMage="$base/imagePersonProfile.jpg";
 }

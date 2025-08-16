@@ -12,6 +12,7 @@ import 'package:evently_project/presentation/models/event_d_m.dart';
 import 'package:evently_project/presentation/models/tab_design_dm.dart';
 import 'package:evently_project/presentation/models/text_field_dm.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../../core/resources/constant_manager.dart';
 import '../../components/custom_tab_bar.dart';
@@ -63,7 +64,7 @@ class _CustomCreateEventState extends State<CustomEditEvent> {
   Widget build(BuildContext context) {
     provider = Provider.of(context);
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: REdgeInsets.all(16.0),
       child: Form(
         key: formKey,
         child: Column(
@@ -72,7 +73,7 @@ class _CustomCreateEventState extends State<CustomEditEvent> {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(
-                16,
+                16.r,
               ),
               child: Image.asset(currentImage),
             ),
@@ -109,7 +110,7 @@ class _CustomCreateEventState extends State<CustomEditEvent> {
                   controller: titleController,
                   validate: (String? input) {
                     if (!ButtonTextValidation.isValidateString(input)) {
-                      return "please , Enter title";
+                      return AppLocalizations.of(context)!.plz_Enter_title;
                     }
                     return null;
                   }),
@@ -128,10 +129,10 @@ class _CustomCreateEventState extends State<CustomEditEvent> {
                   controller: descriptionController,
                   validate: (String? input) {
                     if (!ButtonTextValidation.isValidateString(input)) {
-                      return "please , Enter description";
+                      return AppLocalizations.of(context)!.plz_Enter_description;
                     }
                     if (!ButtonTextValidation.isCharsMoreThan6(input)) {
-                      return "Please , Enter more than 5 letters , Not Spaces";
+                      return AppLocalizations.of(context)!.description_letters;
                     }
                     return null;
                   }),
@@ -184,7 +185,7 @@ class _CustomCreateEventState extends State<CustomEditEvent> {
               ),
             ),
             BuildElevatedButton(
-              nameOfButton: "Update Event",
+              nameOfButton: AppLocalizations.of(context)!.update_event,
               onClicked: () async{
                 if (!formKey.currentState!.validate()) return;
                 try {

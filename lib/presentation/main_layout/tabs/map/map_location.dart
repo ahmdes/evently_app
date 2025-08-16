@@ -2,6 +2,7 @@ import 'package:evently_project/Provider/config_provider.dart';
 import 'package:evently_project/presentation/main_layout/tabs/map/components/map_events.dart';
 import 'package:evently_project/presentation/models/category_d_m.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/resources/colors_manager.dart';
@@ -33,9 +34,9 @@ class _MapLocationState extends State<MapLocation> {
         return Stack(children: [
           value.getMap(),
           Positioned(
-            bottom: 30,
-            height: 150,
-            width: 350,
+            bottom: 30.h,
+            height: 150.h,
+            width: 350.w,
             child: StreamBuilder(
               stream:
                   FirebaseService.getEventsRealTimeUpdates(selectedCategory),

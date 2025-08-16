@@ -4,20 +4,19 @@ class UserDM {
   String email;
   List<dynamic> favoriteEvents;
 
-  UserDM({
-    required this.id,
-    required this.name,
-    required this.email,
-    required this.favoriteEvents,
-  });
+  UserDM(
+      {required this.id,
+      required this.name,
+      required this.email,
+      required this.favoriteEvents,
+      });
 
   factory UserDM.fromJson(Map<String, dynamic> json) {
     return UserDM(
-      id: json['id'],
-      name: json['name'],
-      email: json['email'],
-      favoriteEvents: json['favoriteEvents'],
-    );
+        id: json['id'],
+        name: json['name'],
+        email: json['email'],
+        favoriteEvents: json['favoriteEvents']);
   }
 
   Map<String, dynamic> toJson() {
