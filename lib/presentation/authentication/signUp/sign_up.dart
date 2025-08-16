@@ -27,7 +27,6 @@ class _SignUpState extends State<SignUp> {
   CountryOption selectedCountry = CountryOption.america;
   IconData iconData = Icons.remove_red_eye_sharp;
   late ConfigProvider provider;
-  @override
   bool obsecureOfPassword = true;
   IconData iconDataOfPassword = Icons.remove_red_eye_sharp;
   bool obsecureOfRePassword = true;

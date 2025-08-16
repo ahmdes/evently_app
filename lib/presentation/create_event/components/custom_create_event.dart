@@ -46,6 +46,7 @@ class _CustomCreateEventState extends State<CustomCreateEvent> {
 
   @override
   void dispose() {
+    super.dispose();
     // TODO: implement distitleController.dispose();
     descriptionController.dispose();
     titleController.dispose();

@@ -21,6 +21,7 @@ class CustomTabBar extends StatefulWidget {
 class _CustomTabBarState extends State<CustomTabBar> {
   @override
   void initState() {
+    super.initState();
     // TODO: implement initState
      selectedIndex = widget.categoryId;
   }

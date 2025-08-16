@@ -20,6 +20,7 @@ class ResetPassword extends StatefulWidget {
 class _ResetPasswordState extends State<ResetPassword> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late TextEditingController emailController;
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();

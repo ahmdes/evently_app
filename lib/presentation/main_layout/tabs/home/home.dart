@@ -127,7 +127,6 @@ class _HomeState extends State<Home> {
                   tabDesignDM: TabDesignDM(
                     onCategoryTabClicked: (category) {
                       selectedCategory = category;
-                      print(selectedCategory.id);
                       setState(() {});
                     },
                     selectedTabBG: ColorsManager.light,

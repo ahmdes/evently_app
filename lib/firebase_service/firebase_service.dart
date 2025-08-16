@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evently_project/Provider/config_provider.dart';
 import 'package:evently_project/core/models/user_dm.dart';
@@ -77,16 +79,13 @@ class FirebaseService {
     final ids = provider.currentUser!.favoriteEvents;
 
     if (ids.isEmpty) {
-      print("No favorite IDs found.");
       return [];
     }
 
-    print("Favorite IDs: $ids");
 
     QuerySnapshot<EventDM> querySnapshot =
         await eventCollection.where(FieldPath.documentId, whereIn: ids).get();
 
-    print("Fetched ${querySnapshot.docs.length} events from Firestore.");
 
     List<EventDM> favoriteList = querySnapshot.docs
         .map((eventSnapShot) => eventSnapShot.data())
@@ -107,8 +106,6 @@ class FirebaseService {
     BuildContext context,
     String name,
   ) async {
-    ConfigProvider provider =
-        Provider.of<ConfigProvider>(context, listen: false);
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
@@ -151,7 +148,7 @@ class FirebaseService {
         );
       }
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
     }
   }
 
@@ -281,7 +278,7 @@ class FirebaseService {
       }
 
       // تحديث البيانات في Provider
-      provider.updateUserInfo(existingUser!);
+      provider.updateUserInfo(existingUser);
 
       Navigator.pushNamed(context, RoutesManager.mainLayout);
 

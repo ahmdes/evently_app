@@ -1,5 +1,4 @@
 import 'package:evently_project/core/models/user_dm.dart';
-import 'package:evently_project/core/resources/assets_manager.dart';
 import 'package:evently_project/presentation/models/event_d_m.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
