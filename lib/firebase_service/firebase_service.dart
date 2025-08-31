@@ -251,10 +251,8 @@ class FirebaseService {
         idToken: googleAuth.idToken,
       );
 
-      // تسجيل الدخول
       UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
 
-      // جلب بيانات المستخدم من Firestore
       UserDM? existingUser;
       try {
         existingUser = await getUserFromFireStore(userCredential.user!.uid);
@@ -263,7 +261,6 @@ class FirebaseService {
       }
 
       if (existingUser == null) {
-        // أول مرة يدخل → أضفه ببيانات جديدة
         await addUserToFireStore(UserDM(
           id: userCredential.user!.uid,
           name: userCredential.user!.displayName ?? '',
@@ -273,11 +270,29 @@ class FirebaseService {
         existingUser = await getUserFromFireStore(userCredential.user!.uid);
       }
 
-      // تحديث البيانات في Provider
-      provider.updateUserInfo(existingUser!);
-
-      Navigator.pushNamed(context, RoutesManager.mainLayout);
-
+      provider.updateUserInfo(existingUser);
+      showDialog(
+        context: context,
+        builder: (context) {
+          Future.delayed(Duration(seconds: 3), () {
+            Navigator.pop(context);
+            Navigator.pushNamed(context, RoutesManager.mainLayout);
+          });
+          return AlertDialog(
+              content: Row(
+                children: [
+                  Text(
+                    "Waiting",
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  Spacer(),
+                  CircularProgressIndicator(
+                    color: ColorsManager.blue,
+                  ),
+                ],
+              ));
+        },
+      );
       return userCredential;
     } catch (e) {
       print("Google Sign-In Error: $e");

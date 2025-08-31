@@ -291,6 +291,18 @@ class _SignInState extends State<SignIn> {
   }
 
   void _logInWithGoogle() async {
+
+    // showDialog(
+    //   context: context,
+    //   builder: (context) => AlertDialog(
+    //     backgroundColor: ColorsManager.grey,
+    //     content: Text(
+    //       "Waiting ...",
+    //       style: Theme.of(context).textTheme.displayMedium,
+    //     ),
+    //   ),
+    // );
+
     await FirebaseService.signInWithGoogle(context);
   }
 }
