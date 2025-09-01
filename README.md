@@ -30,7 +30,7 @@ Evently is a responsive Flutter application that allows users to **create**, **v
 
 ## 📽️ Demo Video
 
-🎬 [Watch the demo](https://github.com/ahmdes/contact_app/releases/tag/v1.0.0)  
+🎬 [Watch the demo](https://github.com/ahmdes/evently_app/blob/development/assets/evently_app_video.mp4)  
 *This video showcases how users input their contact info and see it instantly displayed as profile cards. It also highlights validation, responsiveness, reactive UI updates, and Lottie animations.*
 
 ---
