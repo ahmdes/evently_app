@@ -9,6 +9,7 @@ class CreateEvent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        shadowColor: Colors.transparent,
         title: Text(AppLocalizations.of(context)!.create_event),
       ),
       body: CustomCreateEvent(),

@@ -119,12 +119,17 @@ class _ProfileState extends State<Profile> {
                           color: ColorsManager.light,
                         ),
                       ),
-                      Text(
-                        configProvider.currentUser!.email,
-                        style: GoogleFonts.inter(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16.sp,
-                          color: ColorsManager.light,
+                      SizedBox(
+                        height: 15.h,
+                        width: 15.w,
+                        child: Text(
+                          overflow: TextOverflow.ellipsis,
+                          configProvider.currentUser!.email,
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16.sp,
+                            color: ColorsManager.light,
+                          ),
                         ),
                       ),
                     ],

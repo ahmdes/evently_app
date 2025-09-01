@@ -64,212 +64,216 @@ class _SignUpState extends State<SignUp> {
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.register),
       ),
-      body: Form(
-        key: formKey,
-        child: Padding(
-          padding: REdgeInsets.only(
-            top: 30,
-            right: 16,
-            left: 16,
-          ),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 150.h,
-                width: 150.w,
-                child: Image.asset(
-                  AssetsManager.eventlyLogo,
+      // resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView(
+        child: Form(
+          key: formKey,
+          child: Padding(
+            padding: REdgeInsets.only(
+              top: 30,
+              right: 16,
+              left: 16,
+            ),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 150.h,
+                  width: 150.w,
+                  child: Image.asset(
+                    AssetsManager.eventlyLogo,
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
-              SizedBox(
-                height: 379.h,
-                width: 361.w,
-                child: Column(
-                  children: [
-                    BuildTextFields(
-                      textFieldDM: TextFieldDM(
-                          prefixIcon: Icon(
-                            Icons.person,
-                          ),
-                          controller: nameController,
-                          suffixIcon: null,
-                          hintText: AppLocalizations.of(context)!.name,
-                          obsecureText: false,
-                          heightOfTextField: null,
-                          validate: (String? input) {
-                            if (!ButtonTextValidation.isValidateString(input)) {
-                              return "please , enter your name";
-                            }
-                            return null;
-                          }),
-                    ),
-                    Spacer(
-                      flex: 2,
-                    ),
-                    BuildTextFields(
-                      textFieldDM: TextFieldDM(
-                          prefixIcon: Icon(
-                            Icons.email_rounded,
-                          ),
-                          controller: emailController,
-                          suffixIcon: null,
-                          hintText: AppLocalizations.of(context)!.email,
-                          obsecureText: false,
-                          heightOfTextField: null,
-                          validate: (String? email) {
-                            if (!email!.isValidEmail()) {
-                              return "Please enter a valid email";
-                            }
-                            return null;
-                          }),
-                    ),
-                    Spacer(
-                      flex: 2,
-                    ),
-                    BuildTextFields(
-                      textFieldDM: TextFieldDM(
-                          prefixIcon: Icon(
-                            Icons.lock,
-                          ),
-                          controller: passwordController,
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              if (iconDataOfPassword ==
-                                  Icons.remove_red_eye_sharp) {
-                                iconDataOfPassword = Icons.visibility_off;
-                                obsecureOfPassword = false;
-                              } else if (iconDataOfPassword ==
-                                  Icons.visibility_off) {
-                                iconDataOfPassword = Icons.remove_red_eye_sharp;
-                                obsecureOfPassword = true;
+                SizedBox(
+                  height: 30.h,
+                ),
+                SizedBox(
+                  height: 379.h,
+                  width: 361.w,
+                  child: Column(
+                    children: [
+                      BuildTextFields(
+                        textFieldDM: TextFieldDM(
+                            prefixIcon: Icon(
+                              Icons.person,
+                            ),
+                            controller: nameController,
+                            suffixIcon: null,
+                            hintText: AppLocalizations.of(context)!.name,
+                            obsecureText: false,
+                            heightOfTextField: null,
+                            validate: (String? input) {
+                              if (!ButtonTextValidation.isValidateString(input)) {
+                                return "please , enter your name";
                               }
+                              return null;
+                            }),
+                      ),
+                      SizedBox(
+                        height: 15.h,
+                      ),
+                      BuildTextFields(
+                        textFieldDM: TextFieldDM(
+                            prefixIcon: Icon(
+                              Icons.email_rounded,
+                            ),
+                            controller: emailController,
+                            suffixIcon: null,
+                            hintText: AppLocalizations.of(context)!.email,
+                            obsecureText: false,
+                            heightOfTextField: null,
+                            validate: (String? email) {
+                              if (!email!.isValidEmail()) {
+                                return "Please enter a valid email";
+                              }
+                              return null;
+                            }),
+                      ),
+                      SizedBox(
+                        height: 15.h,
+                      ),
+                      BuildTextFields(
+                        textFieldDM: TextFieldDM(
+                            prefixIcon: Icon(
+                              Icons.lock,
+                            ),
+                            controller: passwordController,
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                if (iconDataOfPassword ==
+                                    Icons.remove_red_eye_sharp) {
+                                  iconDataOfPassword = Icons.visibility_off;
+                                  obsecureOfPassword = false;
+                                } else if (iconDataOfPassword ==
+                                    Icons.visibility_off) {
+                                  iconDataOfPassword = Icons.remove_red_eye_sharp;
+                                  obsecureOfPassword = true;
+                                }
 
-                              setState(() {});
-                            },
-                            icon: Icon(
-                              iconDataOfPassword,
+                                setState(() {});
+                              },
+                              icon: Icon(
+                                iconDataOfPassword,
+                              ),
                             ),
-                          ),
-                          hintText: AppLocalizations.of(context)!.password,
-                          obsecureText: obsecureOfPassword,
-                          heightOfTextField: null,
-                          validate: (String? password) {
-                            if (!password!.isValidPassword()) {
-                              return "please , enter valid password";
-                            }
-                            return null;
-                          }),
-                    ),
-                    Spacer(
-                      flex: 2,
-                    ),
-                    BuildTextFields(
-                      textFieldDM: TextFieldDM(
-                          prefixIcon: Icon(
-                            Icons.lock,
-                          ),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              if (iconDataOfRePassword ==
-                                  Icons.remove_red_eye_sharp) {
-                                iconDataOfRePassword = Icons.visibility_off;
-                                obsecureOfRePassword = false;
-                              } else if (iconDataOfRePassword ==
-                                  Icons.visibility_off) {
-                                iconDataOfRePassword =
-                                    Icons.remove_red_eye_sharp;
-                                obsecureOfRePassword = true;
+                            hintText: AppLocalizations.of(context)!.password,
+                            obsecureText: obsecureOfPassword,
+                            heightOfTextField: null,
+                            validate: (String? password) {
+                              if (!password!.isValidPassword()) {
+                                return "please , enter valid password";
                               }
-                              setState(() {});
+                              return null;
+                            }),
+                      ),
+                      SizedBox(
+                        height: 15.h,
+                      ),
+                      BuildTextFields(
+                        textFieldDM: TextFieldDM(
+                            prefixIcon: Icon(
+                              Icons.lock,
+                            ),
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                if (iconDataOfRePassword ==
+                                    Icons.remove_red_eye_sharp) {
+                                  iconDataOfRePassword = Icons.visibility_off;
+                                  obsecureOfRePassword = false;
+                                } else if (iconDataOfRePassword ==
+                                    Icons.visibility_off) {
+                                  iconDataOfRePassword =
+                                      Icons.remove_red_eye_sharp;
+                                  obsecureOfRePassword = true;
+                                }
+                                setState(() {});
+                              },
+                              icon: Icon(
+                                iconDataOfRePassword,
+                              ),
+                            ),
+                            controller: rePasswordController,
+                            hintText: AppLocalizations.of(context)!.re_password,
+                            obsecureText: obsecureOfRePassword,
+                            heightOfTextField: null,
+                            validate: (String? rePassword) {
+                              if (!(rePassword == passwordController.text &&
+                                  rePassword != null)) {
+                                return "password not match";
+                              }
+                              return null;
+                            }),
+                      ),
+                      SizedBox(
+                        height: 30.h,
+                      ),
+                      BuildElevatedButton(
+                        nameOfButton:
+                            AppLocalizations.of(context)!.create_account,
+                        onClicked: _signUp,
+                      ),
+                      Spacer(
+                        flex: 2,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.already_have_account,
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(context, RoutesManager.signIn);
                             },
-                            icon: Icon(
-                              iconDataOfRePassword,
+                            child: Text(
+                              AppLocalizations.of(context)!.login,
+                              style: Theme.of(context).textTheme.displayLarge,
                             ),
                           ),
-                          controller: rePasswordController,
-                          hintText: AppLocalizations.of(context)!.re_password,
-                          obsecureText: obsecureOfRePassword,
-                          heightOfTextField: null,
-                          validate: (String? rePassword) {
-                            if (!(rePassword == passwordController.text &&
-                                rePassword != null)) {
-                              return "password not match";
-                            }
-                            return null;
-                          }),
-                    ),
-                    Spacer(
-                      flex: 4,
-                    ),
-                    BuildElevatedButton(
-                      nameOfButton:
-                          AppLocalizations.of(context)!.create_account,
-                      onClicked: _signUp,
-                    ),
-                    Spacer(
-                      flex: 2,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          AppLocalizations.of(context)!.already_have_account,
-                          style: Theme.of(context).textTheme.titleSmall,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, RoutesManager.signIn);
-                          },
-                          child: Text(
-                            AppLocalizations.of(context)!.login,
-                            style: Theme.of(context).textTheme.displayLarge,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Spacer(),
-                  ],
-                ),
-              ),
-              Spacer(),
-              SizedBox(
-                height: 40.h,
-                width: 75.w,
-                child: AnimatedToggleSwitch<CountryOption>.dual(
-                  current: selectedCountry,
-                  first: CountryOption.egypt,
-                  second: CountryOption.america,
-                  onChanged: (value) {
-                    if (value == CountryOption.egypt) {
-                      provider.configLanguage(Locale("ar"));
-                      selectedCountry = CountryOption.egypt;
-                    } else {
-                      provider.configLanguage(Locale("en"));
-                      selectedCountry = CountryOption.america;
-                    }
-                  },
-                  iconBuilder: (value) => Image.asset(
-                    value == CountryOption.egypt
-                        ? AssetsManager.egypt
-                        : AssetsManager.america,
-                    width: 24.w,
-                    height: 24.h,
-                  ),
-                  style: ToggleStyle(
-                    indicatorColor: ColorsManager.blue,
-                    borderColor: ColorsManager.blue,
-                    borderRadius: BorderRadius.circular(30.r),
-                    backgroundColor: Colors.transparent,
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              Spacer(
-                flex: 10,
-              ),
-            ],
+                SizedBox(
+                  height: 10.h,
+                ),
+                SizedBox(
+                  height: 40.h,
+                  width: 75.w,
+                  child: AnimatedToggleSwitch<CountryOption>.dual(
+                    current: selectedCountry,
+                    first: CountryOption.egypt,
+                    second: CountryOption.america,
+                    onChanged: (value) {
+                      if (value == CountryOption.egypt) {
+                        provider.configLanguage(Locale("ar"));
+                        selectedCountry = CountryOption.egypt;
+                      } else {
+                        provider.configLanguage(Locale("en"));
+                        selectedCountry = CountryOption.america;
+                      }
+                    },
+                    iconBuilder: (value) => Image.asset(
+                      value == CountryOption.egypt
+                          ? AssetsManager.egypt
+                          : AssetsManager.america,
+                      width: 24.w,
+                      height: 24.h,
+                    ),
+                    style: ToggleStyle(
+                      indicatorColor: ColorsManager.blue,
+                      borderColor: ColorsManager.blue,
+                      borderRadius: BorderRadius.circular(30.r),
+                      backgroundColor: Colors.transparent,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

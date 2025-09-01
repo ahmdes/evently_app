@@ -12,6 +12,7 @@ import 'package:evently_project/presentation/models/event_d_m.dart';
 import 'package:evently_project/presentation/models/tab_design_dm.dart';
 import 'package:evently_project/presentation/models/text_field_dm.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../../core/resources/constant_manager.dart';
 import '../../components/custom_tab_bar.dart';
@@ -63,152 +64,164 @@ class _CustomCreateEventState extends State<CustomEditEvent> {
   Widget build(BuildContext context) {
     provider = Provider.of(context);
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: REdgeInsets.all(16.0),
       child: Form(
         key: formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(
-                16,
-              ),
-              child: Image.asset(currentImage),
-            ),
-            CustomTabBar(
-              tabDesignDM: TabDesignDM(
-                selectedTabBG: ColorsManager.blue,
-                unSelectedTabBG: ColorsManager.transparent,
-                selectedLabelColor: ColorsManager.light,
-                unSelectedLabelColor: ColorsManager.blue,
-                borderColor: ColorsManager.blue,
-                onCategoryTabClicked: (selectedCategoryF) {
-                  selectedCategory = ConstantManager
-                      .categoriesWithOutAll[selectedCategoryF.id - 1];
-                  currentImage = selectedCategory.bgImage;
-                  setState(() {});
-                },
-              ),
-              tabs: ConstantManager.eventTabsWithOutAll,
-              categories: ConstantManager.categoriesWithOutAll, categoryId: widget.eventDM.category.id-1,
-            ),
-            Text(
-              AppLocalizations.of(context)!.title,
-              style: Theme.of(context).textTheme.titleSmall,
-            ),
-            BuildTextFields(
-              textFieldDM: TextFieldDM(
-                  prefixIcon: Icon(
-                    Icons.edit_note_sharp,
-                  ),
-                  suffixIcon: null,
-                  hintText: AppLocalizations.of(context)!.event_title,
-                  obsecureText: false,
-                  heightOfTextField: null,
-                  controller: titleController,
-                  validate: (String? input) {
-                    if (!ButtonTextValidation.isValidateString(input)) {
-                      return "please , Enter title";
-                    }
-                    return null;
-                  }),
-            ),
-            Text(
-              AppLocalizations.of(context)!.description,
-              style: Theme.of(context).textTheme.titleSmall,
-            ),
-            BuildTextFields(
-              textFieldDM: TextFieldDM(
-                  prefixIcon: null,
-                  suffixIcon: null,
-                  hintText: AppLocalizations.of(context)!.event_description,
-                  obsecureText: false,
-                  heightOfTextField: null,
-                  controller: descriptionController,
-                  validate: (String? input) {
-                    if (!ButtonTextValidation.isValidateString(input)) {
-                      return "please , Enter description";
-                    }
-                    if (!ButtonTextValidation.isCharsMoreThan6(input)) {
-                      return "Please , Enter more than 5 letters , Not Spaces";
-                    }
-                    return null;
-                  }),
-            ),
-            BuildEventDateAndTime(
-              buildEventDateAndTimeDM: BuildEventDateAndTimeDM(
-                icon: Icon(
-                  Icons.calendar_month_outlined,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(
+                  16.r,
                 ),
-                nameOfChosenEvent: AppLocalizations.of(context)!.choose_date,
-                nameOfEvent: selectedDate.eventDate,
+                child: Image.asset(currentImage),
               ),
-              onClicked: _showDate,
-            ),
-            BuildEventDateAndTime(
-              buildEventDateAndTimeDM: BuildEventDateAndTimeDM(
-                icon: Icon(
-                  Icons.watch_later_outlined,
-                ),
-                nameOfChosenEvent: AppLocalizations.of(context)!.choose_time,
-                nameOfEvent: selectedDate.eventTime,
-              ),
-              onClicked: _showTime,
-            ),
-            Text(
-              AppLocalizations.of(context)!.location,
-              style: Theme.of(context).textTheme.titleSmall,
-            ),
-            BuildTextFields(
-              textFieldDM: TextFieldDM(
-                prefixIcon: Icon(
-                  Icons.my_location_outlined,
-                ),
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    Icons.arrow_forward_ios_outlined,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SelectLocation(),
-                      ),
-                    );
+              SizedBox(height: 20.h,),
+              CustomTabBar(
+                tabDesignDM: TabDesignDM(
+                  selectedTabBG: ColorsManager.blue,
+                  unSelectedTabBG: ColorsManager.transparent,
+                  selectedLabelColor: ColorsManager.light,
+                  unSelectedLabelColor: ColorsManager.blue,
+                  borderColor: ColorsManager.blue,
+                  onCategoryTabClicked: (selectedCategoryF) {
+                    selectedCategory = ConstantManager
+                        .categoriesWithOutAll[selectedCategoryF.id - 1];
+                    currentImage = selectedCategory.bgImage;
+                    setState(() {});
                   },
                 ),
-                hintText: AppLocalizations.of(context)!.choose_event_location,
-                obsecureText: false,
-                heightOfTextField: null,
+                tabs: ConstantManager.eventTabsWithOutAll,
+                categories: ConstantManager.categoriesWithOutAll, categoryId: widget.eventDM.category.id-1,
               ),
-            ),
-            BuildElevatedButton(
-              nameOfButton: "Update Event",
-              onClicked: () async{
-                if (!formKey.currentState!.validate()) return;
-                try {
-                  await FirebaseService.updateEvent(
-                    EventDM(
-                      id: widget.eventDM.id,
-                      description: descriptionController.text,
-                      title: titleController.text,
-                      dateTime: selectedDate.copyWith(
-                        hour: selectedTime.hour,
-                        minute: selectedTime.minute,
-                      ),
-                      category: selectedCategory,
-                      bgImage: currentImage,
-                      uId: widget.eventDM.uId,
-                      latitude: provider.currentLocation.latitude,
-                      longitude: provider.currentLocation.longitude,
+              SizedBox(height: 15.h,),
+              Text(
+                AppLocalizations.of(context)!.title,
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
+              SizedBox(height: 5.h,),
+              BuildTextFields(
+                textFieldDM: TextFieldDM(
+                    prefixIcon: Icon(
+                      Icons.edit_note_sharp,
                     ),
-                  );
-                } catch (exception) {}
-                Navigator.pop(context);
-              },
-            )
-          ],
+                    suffixIcon: null,
+                    hintText: AppLocalizations.of(context)!.event_title,
+                    obsecureText: false,
+                    heightOfTextField: null,
+                    controller: titleController,
+                    validate: (String? input) {
+                      if (!ButtonTextValidation.isValidateString(input)) {
+                        return "please , Enter title";
+                      }
+                      return null;
+                    }),
+              ),
+              SizedBox(height: 15.h,),
+              Text(
+                AppLocalizations.of(context)!.description,
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
+              SizedBox(height: 5.h,),
+              BuildTextFields(
+                textFieldDM: TextFieldDM(
+                    prefixIcon: null,
+                    suffixIcon: null,
+                    hintText: AppLocalizations.of(context)!.event_description,
+                    obsecureText: false,
+                    heightOfTextField: null,
+                    controller: descriptionController,
+                    validate: (String? input) {
+                      if (!ButtonTextValidation.isValidateString(input)) {
+                        return "please , Enter description";
+                      }
+                      if (!ButtonTextValidation.isCharsMoreThan6(input)) {
+                        return "Please , Enter more than 5 letters , Not Spaces";
+                      }
+                      return null;
+                    }),
+              ),
+              SizedBox(height: 15.h,),
+              BuildEventDateAndTime(
+                buildEventDateAndTimeDM: BuildEventDateAndTimeDM(
+                  icon: Icon(
+                    Icons.calendar_month_outlined,
+                  ),
+                  nameOfChosenEvent: AppLocalizations.of(context)!.choose_date,
+                  nameOfEvent: selectedDate.eventDate,
+                ),
+                onClicked: _showDate,
+              ),
+              SizedBox(height: 15.h,),
+              BuildEventDateAndTime(
+                buildEventDateAndTimeDM: BuildEventDateAndTimeDM(
+                  icon: Icon(
+                    Icons.watch_later_outlined,
+                  ),
+                  nameOfChosenEvent: AppLocalizations.of(context)!.choose_time,
+                  nameOfEvent: selectedDate.eventTime,
+                ),
+                onClicked: _showTime,
+              ),
+              SizedBox(height: 15.h,),
+              Text(
+                AppLocalizations.of(context)!.location,
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
+              SizedBox(height: 5.h,),
+              BuildTextFields(
+                textFieldDM: TextFieldDM(
+                  prefixIcon: Icon(
+                    Icons.my_location_outlined,
+                  ),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward_ios_outlined,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SelectLocation(),
+                        ),
+                      );
+                    },
+                  ),
+                  hintText: AppLocalizations.of(context)!.choose_event_location,
+                  obsecureText: false,
+                  heightOfTextField: null,
+                ),
+              ),
+              SizedBox(height: 15.h,),
+              BuildElevatedButton(
+                nameOfButton: "Update Event",
+                onClicked: () async{
+                  if (!formKey.currentState!.validate()) return;
+                  try {
+                    await FirebaseService.updateEvent(
+                      EventDM(
+                        id: widget.eventDM.id,
+                        description: descriptionController.text,
+                        title: titleController.text,
+                        dateTime: selectedDate.copyWith(
+                          hour: selectedTime.hour,
+                          minute: selectedTime.minute,
+                        ),
+                        category: selectedCategory,
+                        bgImage: currentImage,
+                        uId: widget.eventDM.uId,
+                        latitude: provider.currentLocation.latitude,
+                        longitude: provider.currentLocation.longitude,
+                      ),
+                    );
+                  } catch (exception) {}
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
